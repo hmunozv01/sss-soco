@@ -1,0 +1,962 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SoporteICSA_prdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccionLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Accion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Log" Relationship="Self.FK_Log_AccionLog" FromRole="AccionLog" ToRole="Log" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_Area" FromRole="Area" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="CategoriaSolicitud">
+    <Key>
+      <PropertyRef Name="CategoriaSolicitudId" />
+    </Key>
+    <Property Name="CategoriaSolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descr" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_CategoriaSolicitud" FromRole="CategoriaSolicitud" ToRole="Solicitud" />
+    <NavigationProperty Name="SubCategoria" Relationship="Self.FK_SubCategoria_CategoriaSolicitud" FromRole="CategoriaSolicitud" ToRole="SubCategoria" />
+  </EntityType>
+  <EntityType Name="CentroCostoyProyectos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Vigencia" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DocAdjuntos">
+    <Key>
+      <PropertyRef Name="IdDoc" />
+    </Key>
+    <Property Name="IdDoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="Descr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IdTipoDoc" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_DocAdjuntos_Solicitud" FromRole="DocAdjuntos" ToRole="Solicitud" />
+    <NavigationProperty Name="TipoDoc" Relationship="Self.FK_DocAdjuntos_TipoDoc" FromRole="DocAdjuntos" ToRole="TipoDoc" />
+  </EntityType>
+  <EntityType Name="DocTemplate">
+    <Key>
+      <PropertyRef Name="IdDocTemp" />
+    </Key>
+    <Property Name="IdDocTemp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descr" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Documento" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IdTipoDoc" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="EmpresaId" />
+    </Key>
+    <Property Name="EmpresaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="RegionalId" Type="Int32" />
+    <NavigationProperty Name="Regional" Relationship="Self.FK_Empresa_Regional" FromRole="Empresa" ToRole="Regional" />
+    <NavigationProperty Name="ObraSalaVenta" Relationship="Self.FK_ObraSalaVenta_Empresa" FromRole="Empresa" ToRole="ObraSalaVenta" />
+    <NavigationProperty Name="Solicitante" Relationship="Self.FK_Solicitante_Empresa" FromRole="Empresa" ToRole="Solicitante" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_Empresa" FromRole="Empresa" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="EstadoSolicitud">
+    <Key>
+      <PropertyRef Name="EstadoSolicitudId" />
+    </Key>
+    <Property Name="EstadoSolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreEstado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_EstadoSolicitud" FromRole="EstadoSolicitud" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Horas" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Accion" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="Boolean" />
+    <Property Name="TipoId" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="SolicitudId" Type="Int32" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UsuarioId" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="AccionId" Type="Int32" />
+    <Property Name="Tecnico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalId" Type="Int32" />
+    <Property Name="EnvioEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AccionLog" Relationship="Self.FK_Log_AccionLog" FromRole="Log" ToRole="AccionLog" />
+    <NavigationProperty Name="Personal" Relationship="Self.FK_Log_Personal" FromRole="Log" ToRole="Personal" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Log_Solicitud" FromRole="Log" ToRole="Solicitud" />
+    <NavigationProperty Name="TipoLog" Relationship="Self.FK_Log_TipoLog" FromRole="Log" ToRole="TipoLog" />
+  </EntityType>
+  <EntityType Name="ObraSalaVenta">
+    <Key>
+      <PropertyRef Name="ObraSalaVenta1" />
+    </Key>
+    <Property Name="ObraSalaVenta1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+    <Property Name="NombreObraSalaVenta" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK_ObraSalaVenta_Empresa" FromRole="ObraSalaVenta" ToRole="Empresa" />
+  </EntityType>
+  <EntityType Name="Personal">
+    <Key>
+      <PropertyRef Name="PersonalId" />
+    </Key>
+    <Property Name="PersonalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidopaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RegionalId" Type="Int32" />
+    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Rol" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Log" Relationship="Self.FK_Log_Personal" FromRole="Personal" ToRole="Log" />
+    <NavigationProperty Name="Regional" Relationship="Self.FK_Personal_Regional" FromRole="Personal" ToRole="Regional" />
+    <NavigationProperty Name="PersonalRol" Relationship="Self.FK_PersonalRol_Personal" FromRole="Personal" ToRole="PersonalRol" />
+    <NavigationProperty Name="PersonalSubCategoria" Relationship="Self.FK_PersonalSubCategoria_Personal" FromRole="Personal" ToRole="PersonalSubCategoria" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_Personal" FromRole="Personal" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="PersonalRol">
+    <Key>
+      <PropertyRef Name="PersonalRol1" />
+    </Key>
+    <Property Name="PersonalRol1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RolId" Type="Int32" Nullable="false" />
+    <Property Name="PersonalId" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Personal" Relationship="Self.FK_PersonalRol_Personal" FromRole="PersonalRol" ToRole="Personal" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK_PersonalRol_Rol" FromRole="PersonalRol" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="PersonalSubCategoria">
+    <Key>
+      <PropertyRef Name="PersonalSubCategoriaId" />
+    </Key>
+    <Property Name="PersonalSubCategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubCategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="PersonalId" Type="Int32" Nullable="false" />
+    <Property Name="prioridad" Type="Int32" />
+    <NavigationProperty Name="Personal" Relationship="Self.FK_PersonalSubCategoria_Personal" FromRole="PersonalSubCategoria" ToRole="Personal" />
+    <NavigationProperty Name="SubCategoria" Relationship="Self.FK_PersonalSubCategoria_SubCategoria" FromRole="PersonalSubCategoria" ToRole="SubCategoria" />
+  </EntityType>
+  <EntityType Name="Regional">
+    <Key>
+      <PropertyRef Name="RegionalId" />
+    </Key>
+    <Property Name="RegionalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descr" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK_Empresa_Regional" FromRole="Regional" ToRole="Empresa" />
+    <NavigationProperty Name="Personal" Relationship="Self.FK_Personal_Regional" FromRole="Regional" ToRole="Personal" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="RolId" />
+    </Key>
+    <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreRol" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="PersonalRol" Relationship="Self.FK_PersonalRol_Rol" FromRole="Rol" ToRole="PersonalRol" />
+  </EntityType>
+  <EntityType Name="Sociedades">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rut" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Regional" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RegionalId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Solicitante">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="EmpresaId" Type="Int32" />
+    <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Dirección" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sociedad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CentroCosto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK_Solicitante_Empresa" FromRole="Solicitante" ToRole="Empresa" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_Solicitante" FromRole="Solicitante" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="Solicitud">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+    </Key>
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmpresaId" Type="Int32" />
+    <Property Name="usuario" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_solicitud" Type="DateTime" Precision="0" />
+    <Property Name="fecha_resolucion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_comprometida" Type="DateTime" Precision="0" />
+    <Property Name="EstadoSolicitudId" Type="Int32" />
+    <Property Name="Descr" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
+    <Property Name="SolicitanteEmail" Type="String" MaxLength="280" FixedLength="false" Unicode="true" />
+    <Property Name="TipoSolicitudId" Type="Int32" />
+    <Property Name="SolicitanteIdRed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Obra_Oficina_SVenta" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalId" Type="Int32" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Obra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Horas" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CategoriaSolicitudId" Type="Int32" />
+    <Property Name="EsIncidente" Type="Int32" />
+    <Property Name="SubCategoriaId" Type="Int32" />
+    <Property Name="Area" Type="Int32" />
+    <Property Name="SolicitanteNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sociedad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CCyP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SolicitanteId" Type="Int32" />
+    <Property Name="Referencia" Type="Int32" />
+    <NavigationProperty Name="Area1" Relationship="Self.FK_Solicitud_Area" FromRole="Solicitud" ToRole="Area" />
+    <NavigationProperty Name="CategoriaSolicitud" Relationship="Self.FK_Solicitud_CategoriaSolicitud" FromRole="Solicitud" ToRole="CategoriaSolicitud" />
+    <NavigationProperty Name="DocAdjuntos" Relationship="Self.FK_DocAdjuntos_Solicitud" FromRole="Solicitud" ToRole="DocAdjuntos" />
+    <NavigationProperty Name="Empresa" Relationship="Self.FK_Solicitud_Empresa" FromRole="Solicitud" ToRole="Empresa" />
+    <NavigationProperty Name="EstadoSolicitud" Relationship="Self.FK_Solicitud_EstadoSolicitud" FromRole="Solicitud" ToRole="EstadoSolicitud" />
+    <NavigationProperty Name="Log" Relationship="Self.FK_Log_Solicitud" FromRole="Solicitud" ToRole="Log" />
+    <NavigationProperty Name="Personal" Relationship="Self.FK_Solicitud_Personal" FromRole="Solicitud" ToRole="Personal" />
+    <NavigationProperty Name="Solicitante" Relationship="Self.FK_Solicitud_Solicitante" FromRole="Solicitud" ToRole="Solicitante" />
+    <NavigationProperty Name="SubCategoria" Relationship="Self.FK_Solicitud_SubCategoria" FromRole="Solicitud" ToRole="SubCategoria" />
+    <NavigationProperty Name="TipoSolicitud" Relationship="Self.FK_Solicitud_TipoSolicitud" FromRole="Solicitud" ToRole="TipoSolicitud" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_Status_Solicitud" FromRole="Solicitud" ToRole="Status" />
+    <NavigationProperty Name="TareaSolicitud" Relationship="Self.FK_TareaSolicitud_Solicitud" FromRole="Solicitud" ToRole="TareaSolicitud" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="Descr" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="UserIdRed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Esmobile" Type="Boolean" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Status_Solicitud" FromRole="Status" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="SubCategoria">
+    <Key>
+      <PropertyRef Name="SubCategoriaId" />
+    </Key>
+    <Property Name="SubCategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoriaSolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="Descr" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CategoriaSolicitud" Relationship="Self.FK_SubCategoria_CategoriaSolicitud" FromRole="SubCategoria" ToRole="CategoriaSolicitud" />
+    <NavigationProperty Name="PersonalSubCategoria" Relationship="Self.FK_PersonalSubCategoria_SubCategoria" FromRole="SubCategoria" ToRole="PersonalSubCategoria" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_SubCategoria" FromRole="SubCategoria" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TareaSolicitud">
+    <Key>
+      <PropertyRef Name="TareaSolicitudId" />
+    </Key>
+    <Property Name="TareaSolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoTareaId" Type="Int32" />
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_comprometida_inicio" Type="DateTime" Precision="0" />
+    <Property Name="fecha_comprometida_fin" Type="DateTime" Precision="0" />
+    <Property Name="Descr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ResponsableIdRed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Externo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_TareaSolicitud_Solicitud" FromRole="TareaSolicitud" ToRole="Solicitud" />
+    <NavigationProperty Name="TipoTarea" Relationship="Self.FK_TareaSolicitud_TipoTarea" FromRole="TareaSolicitud" ToRole="TipoTarea" />
+  </EntityType>
+  <EntityType Name="TipoDoc">
+    <Key>
+      <PropertyRef Name="IdTipoDoc" />
+    </Key>
+    <Property Name="IdTipoDoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DocAdjuntos" Relationship="Self.FK_DocAdjuntos_TipoDoc" FromRole="TipoDoc" ToRole="DocAdjuntos" />
+  </EntityType>
+  <EntityType Name="TipoLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreTL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Log" Relationship="Self.FK_Log_TipoLog" FromRole="TipoLog" ToRole="Log" />
+  </EntityType>
+  <EntityType Name="TipoSolicitud">
+    <Key>
+      <PropertyRef Name="TipoSolicitudId" />
+    </Key>
+    <Property Name="TipoSolicitudId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreSolicitud" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Solicitud" Relationship="Self.FK_Solicitud_TipoSolicitud" FromRole="TipoSolicitud" ToRole="Solicitud" />
+  </EntityType>
+  <EntityType Name="TipoTarea">
+    <Key>
+      <PropertyRef Name="TipoTareaId" />
+    </Key>
+    <Property Name="TipoTareaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreTipoTarea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TareaSolicitud" Relationship="Self.FK_TareaSolicitud_TipoTarea" FromRole="TipoTarea" ToRole="TareaSolicitud" />
+  </EntityType>
+  <EntityType Name="equiposoporte">
+    <Key>
+      <PropertyRef Name="PersonalId" />
+    </Key>
+    <Property Name="PersonalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="seguimientoproc">
+    <Key>
+      <PropertyRef Name="fecha" />
+    </Key>
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="ResumenSolicitudes">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+      <PropertyRef Name="Tipo_Solicitud" />
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_solicitud" Type="DateTime" Precision="0" />
+    <Property Name="fecha_resolucion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_comprometida" Type="DateTime" Precision="0" />
+    <Property Name="Descr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SolicitanteEmail" Type="String" MaxLength="280" FixedLength="false" Unicode="true" />
+    <Property Name="SolicitanteIdRed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Obra_Oficina_SVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="EstadoSolicitudId" Type="Int32" />
+    <Property Name="Empresa" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Tipo_Solicitud" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="resposable" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Status" Type="DateTime" Precision="0" />
+    <Property Name="UserIdRed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descr_Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Obra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ResumenSolicitudesMobile">
+    <Key>
+      <PropertyRef Name="SolicitudId" />
+      <PropertyRef Name="Tipo_Solicitud" />
+      <PropertyRef Name="estado" />
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="SolicitudId" Type="Int32" Nullable="false" />
+    <Property Name="fecha_creacion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_solicitud" Type="DateTime" Precision="0" />
+    <Property Name="fecha_resolucion" Type="DateTime" Precision="0" />
+    <Property Name="fecha_comprometida" Type="DateTime" Precision="0" />
+    <Property Name="Descr" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="SolicitanteEmail" Type="String" MaxLength="280" FixedLength="false" Unicode="true" />
+    <Property Name="SolicitanteIdRed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Obra_Oficina_SVenta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="EstadoSolicitudId" Type="Int32" />
+    <Property Name="Empresa" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="Tipo_Solicitud" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="resposable" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Status" Type="DateTime" Precision="0" />
+    <Property Name="UserIdRed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Descr_Status" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Obra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalId" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Apellidopaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Log_AccionLog">
+    <End Role="AccionLog" Type="Self.AccionLog" Multiplicity="0..1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AccionLog">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="AccionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Area">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="Area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_CategoriaSolicitud">
+    <End Role="CategoriaSolicitud" Type="Self.CategoriaSolicitud" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaSolicitud">
+        <PropertyRef Name="CategoriaSolicitudId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="CategoriaSolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCategoria_CategoriaSolicitud">
+    <End Role="CategoriaSolicitud" Type="Self.CategoriaSolicitud" Multiplicity="1" />
+    <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriaSolicitud">
+        <PropertyRef Name="CategoriaSolicitudId" />
+      </Principal>
+      <Dependent Role="SubCategoria">
+        <PropertyRef Name="CategoriaSolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocAdjuntos_Solicitud">
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DocAdjuntos" Type="Self.DocAdjuntos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitud">
+        <PropertyRef Name="SolicitudId" />
+      </Principal>
+      <Dependent Role="DocAdjuntos">
+        <PropertyRef Name="SolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocAdjuntos_TipoDoc">
+    <End Role="TipoDoc" Type="Self.TipoDoc" Multiplicity="1" />
+    <End Role="DocAdjuntos" Type="Self.DocAdjuntos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoDoc">
+        <PropertyRef Name="IdTipoDoc" />
+      </Principal>
+      <Dependent Role="DocAdjuntos">
+        <PropertyRef Name="IdTipoDoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empresa_Regional">
+    <End Role="Regional" Type="Self.Regional" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regional">
+        <PropertyRef Name="RegionalId" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="RegionalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ObraSalaVenta_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ObraSalaVenta" Type="Self.ObraSalaVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="ObraSalaVenta">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitante_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Solicitante" Type="Self.Solicitante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="Solicitante">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Empresa">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="EmpresaId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="EmpresaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_EstadoSolicitud">
+    <End Role="EstadoSolicitud" Type="Self.EstadoSolicitud" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoSolicitud">
+        <PropertyRef Name="EstadoSolicitudId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="EstadoSolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="0..1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="PersonalId" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="PersonalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_Solicitud">
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="0..1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitud">
+        <PropertyRef Name="SolicitudId" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="SolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Log_TipoLog">
+    <End Role="TipoLog" Type="Self.TipoLog" Multiplicity="0..1" />
+    <End Role="Log" Type="Self.Log" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoLog">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="TipoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personal_Regional">
+    <End Role="Regional" Type="Self.Regional" Multiplicity="0..1" />
+    <End Role="Personal" Type="Self.Personal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Regional">
+        <PropertyRef Name="RegionalId" />
+      </Principal>
+      <Dependent Role="Personal">
+        <PropertyRef Name="RegionalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalRol_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PersonalRol" Type="Self.PersonalRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="PersonalId" />
+      </Principal>
+      <Dependent Role="PersonalRol">
+        <PropertyRef Name="PersonalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalSubCategoria_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="1" />
+    <End Role="PersonalSubCategoria" Type="Self.PersonalSubCategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="PersonalId" />
+      </Principal>
+      <Dependent Role="PersonalSubCategoria">
+        <PropertyRef Name="PersonalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Personal">
+    <End Role="Personal" Type="Self.Personal" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personal">
+        <PropertyRef Name="PersonalId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="PersonalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalRol_Rol">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+    <End Role="PersonalRol" Type="Self.PersonalRol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="RolId" />
+      </Principal>
+      <Dependent Role="PersonalRol">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonalSubCategoria_SubCategoria">
+    <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="1" />
+    <End Role="PersonalSubCategoria" Type="Self.PersonalSubCategoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategoria">
+        <PropertyRef Name="SubCategoriaId" />
+      </Principal>
+      <Dependent Role="PersonalSubCategoria">
+        <PropertyRef Name="SubCategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_Solicitante">
+    <End Role="Solicitante" Type="Self.Solicitante" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="SolicitanteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_SubCategoria">
+    <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategoria">
+        <PropertyRef Name="SubCategoriaId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="SubCategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Solicitud_TipoSolicitud">
+    <End Role="TipoSolicitud" Type="Self.TipoSolicitud" Multiplicity="0..1" />
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoSolicitud">
+        <PropertyRef Name="TipoSolicitudId" />
+      </Principal>
+      <Dependent Role="Solicitud">
+        <PropertyRef Name="TipoSolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Status_Solicitud">
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Status" Type="Self.Status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitud">
+        <PropertyRef Name="SolicitudId" />
+      </Principal>
+      <Dependent Role="Status">
+        <PropertyRef Name="SolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TareaSolicitud_Solicitud">
+    <End Role="Solicitud" Type="Self.Solicitud" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TareaSolicitud" Type="Self.TareaSolicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Solicitud">
+        <PropertyRef Name="SolicitudId" />
+      </Principal>
+      <Dependent Role="TareaSolicitud">
+        <PropertyRef Name="SolicitudId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TareaSolicitud_TipoTarea">
+    <End Role="TipoTarea" Type="Self.TipoTarea" Multiplicity="0..1" />
+    <End Role="TareaSolicitud" Type="Self.TareaSolicitud" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoTarea">
+        <PropertyRef Name="TipoTareaId" />
+      </Principal>
+      <Dependent Role="TareaSolicitud">
+        <PropertyRef Name="TipoTareaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SoporteICSA_prdEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccionLog" EntityType="Self.AccionLog" />
+    <EntitySet Name="Area" EntityType="Self.Area" />
+    <EntitySet Name="CategoriaSolicitud" EntityType="Self.CategoriaSolicitud" />
+    <EntitySet Name="CentroCostoyProyectos" EntityType="Self.CentroCostoyProyectos" />
+    <EntitySet Name="DocAdjuntos" EntityType="Self.DocAdjuntos" />
+    <EntitySet Name="DocTemplate" EntityType="Self.DocTemplate" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+    <EntitySet Name="EstadoSolicitud" EntityType="Self.EstadoSolicitud" />
+    <EntitySet Name="Log" EntityType="Self.Log" />
+    <EntitySet Name="ObraSalaVenta" EntityType="Self.ObraSalaVenta" />
+    <EntitySet Name="Personal" EntityType="Self.Personal" />
+    <EntitySet Name="PersonalRol" EntityType="Self.PersonalRol" />
+    <EntitySet Name="PersonalSubCategoria" EntityType="Self.PersonalSubCategoria" />
+    <EntitySet Name="Regional" EntityType="Self.Regional" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Sociedades" EntityType="Self.Sociedades" />
+    <EntitySet Name="Solicitante" EntityType="Self.Solicitante" />
+    <EntitySet Name="Solicitud" EntityType="Self.Solicitud" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="SubCategoria" EntityType="Self.SubCategoria" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TareaSolicitud" EntityType="Self.TareaSolicitud" />
+    <EntitySet Name="TipoDoc" EntityType="Self.TipoDoc" />
+    <EntitySet Name="TipoLog" EntityType="Self.TipoLog" />
+    <EntitySet Name="TipoSolicitud" EntityType="Self.TipoSolicitud" />
+    <EntitySet Name="TipoTarea" EntityType="Self.TipoTarea" />
+    <EntitySet Name="equiposoporte" EntityType="Self.equiposoporte" />
+    <EntitySet Name="seguimientoproc" EntityType="Self.seguimientoproc" />
+    <EntitySet Name="ResumenSolicitudes" EntityType="Self.ResumenSolicitudes" />
+    <EntitySet Name="ResumenSolicitudesMobile" EntityType="Self.ResumenSolicitudesMobile" />
+    <AssociationSet Name="FK_Log_AccionLog" Association="Self.FK_Log_AccionLog">
+      <End Role="AccionLog" EntitySet="AccionLog" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Area" Association="Self.FK_Solicitud_Area">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_CategoriaSolicitud" Association="Self.FK_Solicitud_CategoriaSolicitud">
+      <End Role="CategoriaSolicitud" EntitySet="CategoriaSolicitud" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCategoria_CategoriaSolicitud" Association="Self.FK_SubCategoria_CategoriaSolicitud">
+      <End Role="CategoriaSolicitud" EntitySet="CategoriaSolicitud" />
+      <End Role="SubCategoria" EntitySet="SubCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocAdjuntos_Solicitud" Association="Self.FK_DocAdjuntos_Solicitud">
+      <End Role="Solicitud" EntitySet="Solicitud" />
+      <End Role="DocAdjuntos" EntitySet="DocAdjuntos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocAdjuntos_TipoDoc" Association="Self.FK_DocAdjuntos_TipoDoc">
+      <End Role="TipoDoc" EntitySet="TipoDoc" />
+      <End Role="DocAdjuntos" EntitySet="DocAdjuntos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empresa_Regional" Association="Self.FK_Empresa_Regional">
+      <End Role="Regional" EntitySet="Regional" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ObraSalaVenta_Empresa" Association="Self.FK_ObraSalaVenta_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="ObraSalaVenta" EntitySet="ObraSalaVenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitante_Empresa" Association="Self.FK_Solicitante_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Solicitante" EntitySet="Solicitante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Empresa" Association="Self.FK_Solicitud_Empresa">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_EstadoSolicitud" Association="Self.FK_Solicitud_EstadoSolicitud">
+      <End Role="EstadoSolicitud" EntitySet="EstadoSolicitud" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Personal" Association="Self.FK_Log_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_Solicitud" Association="Self.FK_Log_Solicitud">
+      <End Role="Solicitud" EntitySet="Solicitud" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Log_TipoLog" Association="Self.FK_Log_TipoLog">
+      <End Role="TipoLog" EntitySet="TipoLog" />
+      <End Role="Log" EntitySet="Log" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personal_Regional" Association="Self.FK_Personal_Regional">
+      <End Role="Regional" EntitySet="Regional" />
+      <End Role="Personal" EntitySet="Personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalRol_Personal" Association="Self.FK_PersonalRol_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="PersonalRol" EntitySet="PersonalRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalSubCategoria_Personal" Association="Self.FK_PersonalSubCategoria_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="PersonalSubCategoria" EntitySet="PersonalSubCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Personal" Association="Self.FK_Solicitud_Personal">
+      <End Role="Personal" EntitySet="Personal" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalRol_Rol" Association="Self.FK_PersonalRol_Rol">
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="PersonalRol" EntitySet="PersonalRol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonalSubCategoria_SubCategoria" Association="Self.FK_PersonalSubCategoria_SubCategoria">
+      <End Role="SubCategoria" EntitySet="SubCategoria" />
+      <End Role="PersonalSubCategoria" EntitySet="PersonalSubCategoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_Solicitante" Association="Self.FK_Solicitud_Solicitante">
+      <End Role="Solicitante" EntitySet="Solicitante" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_SubCategoria" Association="Self.FK_Solicitud_SubCategoria">
+      <End Role="SubCategoria" EntitySet="SubCategoria" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Solicitud_TipoSolicitud" Association="Self.FK_Solicitud_TipoSolicitud">
+      <End Role="TipoSolicitud" EntitySet="TipoSolicitud" />
+      <End Role="Solicitud" EntitySet="Solicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Status_Solicitud" Association="Self.FK_Status_Solicitud">
+      <End Role="Solicitud" EntitySet="Solicitud" />
+      <End Role="Status" EntitySet="Status" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TareaSolicitud_Solicitud" Association="Self.FK_TareaSolicitud_Solicitud">
+      <End Role="Solicitud" EntitySet="Solicitud" />
+      <End Role="TareaSolicitud" EntitySet="TareaSolicitud" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TareaSolicitud_TipoTarea" Association="Self.FK_TareaSolicitud_TipoTarea">
+      <End Role="TipoTarea" EntitySet="TipoTarea" />
+      <End Role="TareaSolicitud" EntitySet="TareaSolicitud" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="SP_APP_ActualizarInsertarEstadodeSolicitud">
+      <Parameter Name="idSolicitud" Mode="In" Type="Int32" />
+      <Parameter Name="UserIdRed" Mode="In" Type="String" />
+      <Parameter Name="status_descr" Mode="In" Type="String" />
+      <Parameter Name="horas" Mode="In" Type="Decimal" />
+      <Parameter Name="Identificador" Mode="InOut" Type="Int32" />
+      <Parameter Name="Objeto" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_APP_InsertarStatusenSolicitud">
+      <Parameter Name="idSolicitud" Mode="In" Type="Int32" />
+      <Parameter Name="UserIdRed" Mode="In" Type="String" />
+      <Parameter Name="status_descr" Mode="In" Type="String" />
+      <Parameter Name="Identificador" Mode="InOut" Type="Int32" />
+      <Parameter Name="Objeto" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_APP_ObtenerHorasDelDiaxUsuario" ReturnType="Collection(Decimal)">
+      <Parameter Name="UserIdRed" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_APP_ObtenerHorasyTicketDelDiaxUsuario" ReturnType="Collection(SoporteICSA_prdModel.SP_APP_ObtenerHorasyTicketDelDiaxUsuario_Result)">
+      <Parameter Name="UserIdRed" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Carga_Centro_Costo_y_Proyectos" />
+    <FunctionImport Name="SP_Carga_Sociedades" />
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="SP_DB_Obtener_Categoria" ReturnType="Collection(SoporteICSA_prdModel.SP_DB_Obtener_Categoria_Result)" />
+    <FunctionImport Name="SP_DB_Obtener_Estado_Solicitud_por_Responsable" />
+    <FunctionImport Name="SP_DB_Obtener_Solicitantes" />
+    <FunctionImport Name="SP_DB_Obtener_Solicitudes_Pendientes_Atrasadas_por_Responsable" />
+    <FunctionImport Name="SP_DB_Obtener_Tipo_Solicitud" ReturnType="Collection(SoporteICSA_prdModel.SP_DB_Obtener_Tipo_Solicitud_Result)" />
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_grabarextensionsolicitud">
+      <Parameter Name="idSolicitud" Mode="In" Type="Int32" />
+      <Parameter Name="UserIdRed" Mode="In" Type="String" />
+      <Parameter Name="status_descr" Mode="In" Type="String" />
+      <Parameter Name="horas" Mode="In" Type="Decimal" />
+      <Parameter Name="Identificador" Mode="InOut" Type="Int32" />
+      <Parameter Name="Objeto" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(SoporteICSA_prdModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(SoporteICSA_prdModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="SP_APP_ObtenerHorasyTicketDelDiaxUsuario_Result">
+    <Property Type="Decimal" Name="TotalHoras" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="TotalTickets" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_DB_Obtener_Categoria_Result">
+    <Property Type="Int32" Name="CategoriaId" Nullable="true" />
+    <Property Type="String" Name="CategoriaNombre" Nullable="true" MaxLength="80" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_DB_Obtener_Tipo_Solicitud_Result">
+    <Property Type="Int32" Name="TipoSolicitudId" Nullable="true" />
+    <Property Type="String" Name="TipoSolicitudNombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

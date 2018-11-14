@@ -1,0 +1,794 @@
+﻿@model  SolicitudSoporteSistemas_prd.Models.SolicitudSS
+
+@{
+    ViewBag.Title = "ModificarSSS";
+    Layout = "~/Views/Shared/_LayoutSS.cshtml";
+}
+
+
+<div class="col-lg-12 col-md-12">
+    <div class="card card-nav-tabs">
+        <div class="card-header" data-background-color="purple">
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <span class="nav-tabs-title">Item:</span>
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                        @*<li class="active">*@
+                        <li class="">
+                            <a href="#solicitudenitemid" data-toggle="tab">
+                                <i class="material-icons">content_paste</i> Solicitud
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#logenitemid" data-toggle="tab">
+                                <i class="material-icons">message</i> Log
+                                <div class="ripple-container"></div>
+                            </a>
+                        </li>
+                        @*<li class="">
+                                <a href="#documentoenitemid" data-toggle="tab">
+                                    <i class="material-icons">attach_file</i> Documento
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="tab-content">
+
+                <div class="tab-pane" id="solicitudenitemid" name="solicitudenitem">
+                    <div class="card">
+
+                        <div class="card-content">
+
+                            @*@using (Html.BeginForm("ModificarSSS", "SS", new { idsol = Model.Cabecera.SolicitudId }, FormMethod.Post, new { onsubmit = "return validateFormModificarSSS()" }))*@
+                            @using (Html.BeginForm("ModificarSSS", "SS", FormMethod.Post, new { onsubmit = "return validateFormModificarSSS()" }))
+                            {
+
+                                @*<form id="crearsolicitudsoportesistemas" action="" onsubmit="return validateFormCrearSSS()">*@
+
+                                <!-- Encabezado -->
+
+                                <div class="col-md-12">
+
+                                    <!--  -->
+
+                                    <div class="card">
+                                        <div class="card-title">
+                                            <div class="icon-bar">
+                                                <a href="#">
+                                                    <i class="material-icons">lock</i> Encabezado
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.SolicitudId, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DisplayFor(model => model.Cabecera.SolicitudId, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_solicitudid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                                        @*<span id="modificarsss_solicitudid_error" style="display: none;">Campo Obligatorio</span>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.HorasTotal, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DisplayFor(model => model.Cabecera.HorasTotal, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_horasid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                                        <span id="modificarsss_horasid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.SolicitanteIdRed, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DisplayFor(model => model.Cabecera.SolicitanteIdRed, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_solicitanteidredid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                                        @*<span id="modificarsss_solicitanteidredid_error" style="display: none;">Campo Obligatorio</span>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.FechaCreacion, htmlAttributes: new { @class = "control-label" })
+                                                        <div class="input-group input-append date">
+                                                            @Html.DisplayFor(model => model.Cabecera.FechaCreacion, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fechacreacionid" } })
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                            @*<i class="material-icons">date_range</i>*@
+                                                        </div>
+                                                        <span id="modificarsss_fechacreacionid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.FechaResolucion, htmlAttributes: new { @class = "control-label" })
+                                                        <div class="input-group input-append date">
+                                                            @Html.DisplayFor(model => model.Cabecera.FechaResolucion, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fecharesolucionid" } })
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+
+                                                        </div>
+                                                        <span id="modificarsss_fecharesolucionid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.Duracion, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.DisplayFor(model => model.Cabecera.Duracion, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_duracionid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.Duracion, "", new { @class = "text-danger" })*@
+                                                        @*<span id="modificarsss_duracionid_error" style="display: none;">Campo Obligatorio</span>*@
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-1">
+                                                    <div class="form-group label-floating">
+                                                        @if (Model.Cabecera.Semaforo.Equals("red"))
+                                                        {
+                                                            <i class="material-icons text-danger">timer_off</i>
+                                                        }
+                                                        else if (Model.Cabecera.Semaforo.Equals("yellow"))
+                                                        {
+                                                            <i class="material-icons text-warning">timelapse</i>
+                                                        }
+                                                        else if (Model.Cabecera.Semaforo.Equals("green"))
+                                                        {
+                                                            <i class="material-icons text-success">timer</i>
+                                                        }
+                                                        else
+                                                        {
+                                                            <i class="material-icons">access_time</i>
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Izquierda -->
+                                <div class="col-md-6">
+
+                                    <!--Solicitante-->
+
+                                    <div class="card">
+                                        <div class="card-title">
+                                            <div class="icon-bar">
+                                                <a href="#">
+                                                    <i class="material-icons">person</i> Solicitante
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating" id="divsolicitanteemail">
+                                                        @Html.LabelFor(model => model.Cabecera.SolicitanteEmail, htmlAttributes: new { @class = "control-label" })
+
+                                                        @if (Session["RolId"].ToString().Equals("6"))
+                                                        {
+                                                            @Html.EditorFor(model => model.Cabecera.SolicitanteEmail, new { htmlAttributes = new { @class = "form-control typeahead", @id = "solicitanteemailid" } })
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                                            <span id="solicitanteemailid_error1" style="display: none;">Campo Obligatorio</span>
+                                                            <span id="solicitanteemailid_error2" style="display: none;">Favor incorporar e-mail válido</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DisplayFor(model => model.Cabecera.SolicitanteEmail, new { htmlAttributes = new { @class = "form-control", @id = "solicitanteemailid_lectura" } })
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group label-floating controls" id="divubicacionsss">
+                                                        @Html.LabelFor(model => model.Cabecera.UbicacionNombre, htmlAttributes: new { @class = "control-label" })
+
+                                                        @if (Session["RolId"].ToString().Equals("6"))
+                                                        {
+                                                            @Html.EditorFor(model => model.Cabecera.UbicacionNombre, new { htmlAttributes = new { @class = "form-control typeahead", @id = "modificarsss_ubicacionid" } })
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                            <span id="modificarsss_ubicacionid_error1" style="display: none;">Campo Obligatorio</span>
+                                                            <span id="modificarsss_ubicacionid_error2" style="display: none;">Favor incorporar carácteres válidos</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DisplayFor(model => model.Cabecera.UbicacionNombre, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_ubicacionid_lectura" } })
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.SolicitanteNombre, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Cabecera.SolicitanteNombre, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_solicitantenombreid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                                        @*<span id="modificarsss_solicitantenombreid_error1" style="display: none;">Campo Obligatorio</span>
+                                                            <span id="modificarsss_solicitantenombreid_error2" style="display: none;">Favor incorporar nombre del solicitante</span>*@
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.Telefono, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Cabecera.Telefono, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_telefonoid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                        <span id="modificarsss_telefonoid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.Direccion, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Cabecera.Direccion, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_direccionid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                        @*<span id="modificarsss_telefonoid_error" style="display: none;">Campo Obligatorio</span>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Empresa</label>
+                                                        <input type="text" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="dropdown ">
+                                                        @Html.DropDownListFor(model => model.Cabecera.EmpresaId, new SelectList(ViewBag.Empresas, "EmpresaId", "Nombre"), "Seleccione Empresa", new { @class = "form-control", @id = "modificarsss_empresaid" })
+                                                        <span id="modificarsss_empresaid_error" style="display: none;">Favor seleccionar Empresa</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-floating controls" id="divsociedadsss">
+                                                        @Html.LabelFor(model => model.Cabecera.SociedadNombre, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Cabecera.SociedadNombre, new { htmlAttributes = new { @class = "form-control typeahead", @id = "modificarsss_sociedadid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                        <span id="modificarsss_sociedadid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-floating controls" id="divccypsss">
+                                                        @Html.LabelFor(model => model.Cabecera.CentroCostoNombre, htmlAttributes: new { @class = "control-label" })
+                                                        @Html.EditorFor(model => model.Cabecera.CentroCostoNombre, new { htmlAttributes = new { @class = "form-control typeahead", @id = "modificarsss_ccypid" } })
+                                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                        <span id="modificarsss_ccypid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!--Tecnico-->
+
+                                    <div class="card">
+                                        <div class="card-title">
+                                            <div class="icon-bar">
+                                                <a href="#">
+                                                    <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
+                                                    <i class="material-icons">person_outline</i> Asignado a (opcional)
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-floating controls" id="divasignadoemail">
+                                                        @Html.LabelFor(model => model.Cabecera.AsignadoAEmail, htmlAttributes: new { @class = "control-label" })
+
+                                                        @if (Session["RolId"].ToString().Equals("6"))
+                                                        {
+                                                            @Html.EditorFor(model => model.Cabecera.AsignadoAEmail, new { htmlAttributes = new { @class = "form-control typeahead", @id = "asignadoemailid" } })
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                                            <span id="asignadoemailid_error" style="display: none;">Favor incorporar e-mail válido</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DisplayFor(model => model.Cabecera.AsignadoAEmail, new { htmlAttributes = new { @class = "form-control", @id = "asignadoemailid_lectura" } })
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Derecha -->
+                                <div class="col-md-6">
+
+                                    <!--Detalle-->
+
+                                    <div class="card">
+                                        <div class="card-title">
+                                            <div class="icon-bar">
+                                                <a href="#">
+                                                    <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
+                                                    <i class="material-icons">description</i> Detalle
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.FechaSolicitada, htmlAttributes: new { @class = "control-label" })
+                                                        <div class="input-group input-append date">
+                                                            @*@Html.EditorFor(model => model.Cabecera.FechaSolicitada, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fechasolicitadaid" } })*@
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+
+                                                            @if (Session["RolId"].ToString().Equals("6"))
+                                                            {
+                                                                @Html.EditorFor(model => model.Cabecera.FechaSolicitada, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fechasolicitadaid" } })
+                                                                @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DisplayFor(model => model.Cabecera.FechaSolicitada, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fechasolicitadaid_lectura" } })
+                                                            }
+
+                                                            @*<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>*@
+                                                        </div>
+                                                        <span id="modificarsss_fechasolicitadaid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        @Html.LabelFor(model => model.Cabecera.FechaComprometida, htmlAttributes: new { @class = "control-label" })
+                                                        <div class="input-group input-append date">
+                                                            @*@Html.EditorFor(model => model.Cabecera.FechaComprometida, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fechacomprometidaid" } })*@
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+
+                                                            @if (Session["RolId"].ToString().Equals("6"))
+                                                            {
+                                                                @Html.EditorFor(model => model.Cabecera.FechaComprometida, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fechacomprometidaid" } })
+                                                                @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                                            }
+                                                            else
+                                                            {
+                                                                @Html.DisplayFor(model => model.Cabecera.FechaComprometida, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_fechacomprometidaid_lectura" } })
+                                                            }
+
+                                                            @*<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>*@
+                                                        </div>
+                                                        <span id="modificarsss_fechacomprometidaid_error" style="display: none;">Campo Obligatorio</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group label-floating">
+                                                        @if (Session["RolId"].ToString().Equals("6"))
+                                                        {
+                                                            @Html.LabelFor(model => model.Cabecera.Referencia, htmlAttributes: new { @class = "control-label" })
+                                                            @Html.EditorFor(model => model.Cabecera.Referencia, new { htmlAttributes = new { @class = "form-control", @id = "referenciaid" } })
+                                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                                            <span id="referenciaid_error" style="display: none;">Campo Obligatorio</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DisplayFor(model => model.Cabecera.Referencia, new { htmlAttributes = new { @class = "form-control", @id = "referenciaid_lectura" } })
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Estado</label>
+                                                        <input type="text" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="dropdown ">
+
+                                                        @if (Session["RolId"].ToString().Equals("6"))
+                                                        {
+                                                            @Html.DropDownListFor(model => model.Cabecera.EstadoId, new SelectList(ViewBag.EstadosSolicitud, "EstadoSolicitudId", "NombreEstado", Model.Cabecera.EstadoId), new { @class = "form-control", @id = "modificarssscomp_estadoid" })
+                                                            <span id="modificarssscomp_estadoid_error" style="display: none;">Favor seleccionar Estado</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownListFor(model => model.Cabecera.EstadoId, new SelectList(ViewBag.EstadosSolicitud, "EstadoSolicitudId", "NombreEstado", Model.Cabecera.EstadoId), new { @class = "form-control", @id = "modificarssscomp_estadoid_lectura", disabled = "disabled" })
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Tipo Solicitud</label>
+                                                        <input type="text" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="dropdown ">
+
+                                                        @if (Session["RolId"].ToString().Equals("6"))
+                                                        {
+                                                            @Html.DropDownListFor(model => model.Cabecera.TipoSolicitudId, new SelectList(ViewBag.TiposSolicitud, "TipoSolicitudId", "NombreSolicitud"), "Seleccione Tipo", new { @class = "form-control", @id = "modificarsss_tiposolicitudid" })
+                                                            <span id="modificarsss_tiposolicitudid_error" style="display: none;">Favor seleccionar Tipo Solicitud</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.DropDownListFor(model => model.Cabecera.TipoSolicitudId, new SelectList(ViewBag.TiposSolicitud, "TipoSolicitudId", "NombreSolicitud"), "Seleccione Tipo", new { @class = "form-control", @id = "modificarsss_tiposolicitudid_lectura", disabled = "disabled" })
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Categoría</label>
+                                                        <input type="text" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="dropdown ">
+                                                        @*@Html.DropDownListFor(model => model.CategoriaId, new SelectList(ViewBag.Categorias, "CategoriaSolicitudId", "Descr"), "Seleccione Categoría", new { @class = "form-control", @id = "modificarsss_categoriaid" })*@
+                                                        @Html.DropDownListFor(model => model.Cabecera.CategoriaId, new SelectList(ViewBag.Categorias as System.Collections.IEnumerable, "CategoriaSolicitudId", "Descr"), "Seleccione Categoría", new { @class = "form-control", @id = "sss_categoriaid" })
+                                                        <span id="sss_categoriaid_error" style="display: none;">Favor seleccionar Categoría</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Sub-categoría</label>
+                                                        <input type="text" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="dropdown ">
+                                                        @*@Html.DropDownListFor(model => model.SubCategoriaId, new SelectList(ViewBag.SubCategorias, "SubCategoriaId", "Descr"), "Seleccione Sub-categoría", new { @class = "form-control", @id = "modificarsss_subcategoriaid" })*@
+                                                        @Html.DropDownListFor(model => model.Cabecera.SubCategoriaId, new SelectList(Enumerable.Empty<SelectListItem>(), "SubCategoriaId", "Descr"), "Seleccione Sub-categoría", new { @class = "form-control", @id = "sss_subcategoriaid" })
+                                                        <span id="sss_subcategoriaid_error" style="display: none;">Favor seleccionar Sub-categoría</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-2 text-center">
+
+                                                    @if (Session["RolId"].ToString().Equals("6"))
+                                                    {
+                                                        @Html.CheckBoxFor(m => m.Cabecera.Incidente, new { @class = "" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.DisplayFor(model => model.Cabecera.Incidente)
+                                                    }
+
+                                                </div>
+                                                <div class="col-md-4 text-left">
+                                                    @Html.LabelFor(m => m.Cabecera.Incidente, new { @class = "" })
+                                                    @*@Html.DisplayTextFor(m => m.Incidente)*@                      @*Muestra true o false*@
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group label-floating controls">
+
+                                                        @Html.LabelFor(model => model.Cabecera.Descripcion, htmlAttributes: new { @class = "control-label" })
+
+                                                        @if (Session["RolId"].ToString().Equals("6"))
+                                                        {
+                                                            @Html.TextAreaFor(model => model.Cabecera.Descripcion, new { @class = "form-control", @id = "modificarsss_descripcionid", @rows = 5, @maxlength = 350 })
+                                                            <span id="modificarsss_descripcionid_error" style="display: none;">Favor incorporar Descripción</span>
+                                                            <span id="sss_caracteres" style="color:gray">0 de 350 caracteres usados</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @*@Html.TextAreaFor(model => model.Cabecera.Descripcion, new { @class = "form-control", @id = "modificarsss_descripcionid_lectura", @rows = 5, @readonly = "readonly" })*@
+                                                            @Html.DisplayFor(model => model.Cabecera.Descripcion, new { htmlAttributes = new { @class = "form-control", @id = "modificarsss_descripcionid_lectura", @rows = 5 } })
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*@Html.HiddenFor(m => m.Cabecera.TipoSolicitudNombre)
+                                    @Html.HiddenFor(m => m.Cabecera.EmpresaNombre)
+                                    @Html.HiddenFor(m => m.Cabecera.UbicacionId)
+                                    @Html.HiddenFor(m => m.Cabecera.AsignadoAId)
+                                    @Html.HiddenFor(m => m.Cabecera.AsignadoANombre)
+                                    @Html.HiddenFor(m => m.Cabecera.SolicitanteId)
+                                    @Html.HiddenFor(m => m.Cabecera.SolicitanteNombre)
+                                    @Html.HiddenFor(m => m.Cabecera.CategoriaNombre)
+                                    @Html.HiddenFor(m => m.Cabecera.SubCategoriaNombre)
+                                    @Html.HiddenFor(m => m.Cabecera.EstadoNombre)*@
+
+                                // tipo cabeceraSSS
+                                @Html.HiddenFor(m => m.Cabecera.SolicitudId)
+
+                                @Html.HiddenFor(m => m.Cabecera.TipoSolicitudId)
+                                @Html.HiddenFor(m => m.Cabecera.TipoSolicitudNombre)
+                                @Html.HiddenFor(m => m.Cabecera.EmpresaId)
+                                @Html.HiddenFor(m => m.Cabecera.EmpresaNombre)
+                                @Html.HiddenFor(m => m.Cabecera.UbicacionId)
+                                @Html.HiddenFor(m => m.Cabecera.UbicacionNombre)
+                                //@Html.HiddenFor(m => m.Proyecto)
+                                //@Html.HiddenFor(m => m.Direccion)
+                                @Html.HiddenFor(m => m.Cabecera.Incidente)
+                                @Html.HiddenFor(m => m.Cabecera.AsignadoAId)
+                                @Html.HiddenFor(m => m.Cabecera.AsignadoANombre)
+                                @Html.HiddenFor(m => m.Cabecera.AsignadoAEmail)
+                                @Html.HiddenFor(m => m.Cabecera.SolicitanteIdRed)
+                                @Html.HiddenFor(m => m.Cabecera.SolicitanteId)
+                                @Html.HiddenFor(m => m.Cabecera.SolicitanteNombre)
+                                @Html.HiddenFor(m => m.Cabecera.Telefono)
+                                @Html.HiddenFor(m => m.Cabecera.Direccion)
+                                @Html.HiddenFor(m => m.Cabecera.SolicitanteEmail)
+                                @Html.HiddenFor(m => m.Cabecera.CategoriaId)
+                                @Html.HiddenFor(m => m.Cabecera.CategoriaNombre)
+                                @Html.HiddenFor(m => m.Cabecera.SubCategoriaId)
+                                @Html.HiddenFor(m => m.Cabecera.SubCategoriaNombre)
+                                @Html.HiddenFor(m => m.Cabecera.HorasTotal)
+                                @Html.HiddenFor(m => m.Cabecera.Descripcion)
+                                @Html.HiddenFor(m => m.Cabecera.EstadoId)
+                                @Html.HiddenFor(m => m.Cabecera.EstadoNombre)
+                                @Html.HiddenFor(m => m.Cabecera.EstadoTipo)
+                                @Html.HiddenFor(m => m.Cabecera.FechaCreacion)
+                                @Html.HiddenFor(m => m.Cabecera.FechaSolicitada)
+                                @Html.HiddenFor(m => m.Cabecera.FechaComprometida)
+                                @Html.HiddenFor(m => m.Cabecera.FechaResolucion)
+                                @Html.HiddenFor(m => m.Cabecera.Creacion)
+                                @Html.HiddenFor(m => m.Cabecera.SociedadNombre)
+                                @Html.HiddenFor(m => m.Cabecera.CentroCostoNombre)
+
+                                <button type="submit" id="submit" name="submit" value="ModificarSSS" class="btn btn-primary pull-right">Modificar Solicitud</button>
+                                <div class="clearfix"></div>
+
+                                @*</form>*@
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Logs -->
+
+                <div class="tab-pane active" id="logenitemid" name="logenitem">
+                    <div class="card">
+                        <!--<div class="card-header" data-background-color="purple">
+                            <h4 class="title">Logs</h4>
+                            <p class="category">Registros automáticos y comentarios de usuarios</p>
+                        </div>-->
+                        <div class="card-content table-responsive">
+
+                            @if (Model != null)
+                            {
+                                List<SolicitudSoporteSistemas_prd.Models.LogSSS> itemlogs = Model.Logs.
+                                    //OrderByDescending(x => x.LogFecha).
+                                    //OrderByDescending(x => x.LogFecha.Value.Year).
+                                    //OrderByDescending(y => y.LogFecha.Value.Month).
+                                    //OrderByDescending(y => y.LogFecha.Value.Day).
+                                    //OrderByDescending(y => y.LogFecha.Value.TimeOfDay).
+                                    ToList();
+
+                                @*<table class="table">*@
+                                <table class="table table-hover table-striped" id="myTable">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th>@Html.DisplayNameFor(model => model.Logs[0].LogFecha)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Logs[0].LogUsuarioIdRed)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Logs[0].LogAccionNombre)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Logs[0].LogTipoIdNombre)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Logs[0].LogDescripcion)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Logs[0].LogTecnicoEmail)</th>
+                                            <th>@Html.DisplayNameFor(model => model.Logs[0].LogHora)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (itemlogs.Count > 0)
+                                        {
+                                            foreach (var ilogs in itemlogs)
+                                            {
+                                                <tr>
+                                                    <td>@Html.DisplayFor(modelItem => ilogs.LogFecha)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ilogs.LogUsuarioIdRed)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ilogs.LogAccionNombre)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ilogs.LogTipoIdNombre)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ilogs.LogDescripcion)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ilogs.LogTecnicoEmail)</td>
+                                                    <td>@Html.DisplayFor(modelItem => ilogs.LogHora)</td>
+                                                </tr>
+                                            }
+                                        }
+                                        @*else
+                                            {
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
+                                            }*@
+                                    </tbody>
+                                </table>
+
+
+                                @Html.Action("CrearLogSSS", new { solicitudid = Model.Cabecera.SolicitudId, solicitudhora = Model.Cabecera.HorasTotal, personalid = Model.Cabecera.AsignadoAId, tecnico = Model.Cabecera.AsignadoAEmail, tipoestado = Model.Cabecera.EstadoTipo });
+                                @*@Html.Action("CrearLogSSS", new { cabecerasss = Model.Cabecera });*@
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentos -->
+
+                <div class="tab-pane" id="documentoenitemid" name="documentoenitem">
+                    <div class="card">
+                        <!--<div class="card-header" data-background-color="purple">
+                            <h4 class="title">Documentos</h4>
+                            <p class="category">Documentos adjuntos</p>
+                        </div>-->
+                        <div class="card-content table-responsive">
+
+                            @if (Model != null)
+                            {
+                                List<SolicitudSoporteSistemas_prd.Models.DocumentoSSS> itemdoc = Model.Documentos;
+
+                                if (itemdoc.Count > 0)
+                                {
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                            <tr>
+                                                <th>@Html.DisplayNameFor(model => model.Documentos[0].DocumentoTipo)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Documentos[0].DocumentoNombre)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Documentos[0].DocumentoDescripcion)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Documentos[0].DocumentoUsuario)</th>
+                                                <th>@Html.DisplayNameFor(model => model.Documentos[0].DocumentoFecha)</th>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var idocs in itemdoc)
+                                            {
+                                                <tr>
+                                                    <td>@Html.DisplayFor(modelItem => idocs.DocumentoTipo)</td>
+                                                    <td>@Html.DisplayFor(modelItem => idocs.DocumentoNombre)</td>
+                                                    <td>@Html.DisplayFor(modelItem => idocs.DocumentoDescripcion)</td>
+                                                    <td>@Html.DisplayFor(modelItem => idocs.DocumentoUsuario)</td>
+                                                    <td>@Html.DisplayFor(modelItem => idocs.DocumentoFecha)</td>
+                                                    <td><button type="button" class="btn btn-info btn-xs">Descargar</button></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            }
+
+
+
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <tr>
+                                        <th>Usuario</th>
+                                        <th>Fecha</th>
+                                        <th>Fuente</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>vsandoval</td>
+                                        <td>23-11-2017</td>
+                                        <td><a class="btn btn-default btn-xs" href="download/acme-doc-2.0.1.txt" download="nombrearchivo.txt">Descargar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>vsandoval</td>
+                                        <td>23-11-2017</td>
+                                        <td><button type="button" class="btn btn-info btn-xs">Descargar</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="card">
+                                <div class="card-title">
+                                    <div class="icon-bar">
+                                        <a href="#">
+                                            <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
+                                            <i class="material-icons">file_upload</i> Nuevo Documento
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+
+                                    <form id="item_adjuntarnuevodocumento">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="input-group">
+                                                    <label class="input-group-btn ">
+                                                        <span class="btn btn-file">
+                                                            Buscar&hellip; <input type="file" id="adjuntardocumentoid" name="adjuntardocumento" style="display: none; " multiple>
+                                                        </span>
+                                                    </label>
+                                                    <input type="text" class="form-control" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pull-right " value="">Adjuntar Documento(s)</button>
+                                        <div class="clearfix"></div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@{string stringcuentas = string.Empty;}
+@{stringcuentas = ViewBag.StringCuentas;}
+
+<textarea class="form-control" rows="1" id="listacuentasid" name="listacuentas" placeholder="">@stringcuentas</textarea>
+@*<textarea class="form-control" rows="1" id="modificarsssasignadoid" name="modificarsssasignado" placeholder="">@stringcuentas</textarea>*@
+
+
+
+@{string stringObraSalaVenta = string.Empty;}
+@{stringObraSalaVenta = ViewBag.StringObraSalaVenta;}
+<textarea class="form-control" rows="1" id="listaubicacionesid" name="listaubicaciones" placeholder="">@stringObraSalaVenta</textarea>
+
+
+
+@{string crearCCyP = string.Empty;}
+@{crearCCyP = ViewBag.StringCostoyProyecto;}
+<textarea class="form-control" rows="1" id="listaccypid" name="listaccyp" placeholder="">@crearCCyP</textarea>
+
+
+
+@{string crearSoc = string.Empty;}
+@{crearSoc = ViewBag.StringSociedades;}
+<textarea class="form-control" rows="1" id="listasocid" name="listasoc" placeholder="">@crearSoc</textarea>
+
+
+
+@{string stringsolicitantes = string.Empty;}
+@{stringsolicitantes = ViewBag.StringSolicitantes;}
+
+<textarea class="form-control" rows="1" id="listasolicitantesid" name="listasolicitantes" placeholder="">@stringsolicitantes</textarea>

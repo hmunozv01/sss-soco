@@ -1,0 +1,433 @@
+﻿@model  SolicitudSoporteSistemas_prd.Models.CabeceraSSS
+
+@{
+    ViewBag.Title = "CrearSSSComp";
+    Layout = "~/Views/Shared/_LayoutSS.cshtml";
+}
+
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header" data-background-color="purple">
+            <h4 class="title">Solicitud Soporte Sistemas</h4>
+            <p class="category">Favor completar datos faltantes del formulario para la creación COMPLETA de una solicitud </p>
+        </div>
+        <div class="card-content">
+
+            @using (Html.BeginForm("CrearSSSComp", "SS", FormMethod.Post, new { onsubmit = "return validateFormCrearSSSComp()" }))
+            {
+
+                @*<form id="crearsolicitudsoportesistemas" action="" onsubmit="return validateFormCrearSSS()">*@
+
+                <!-- Izquierda -->
+                <div class="col-md-6">
+
+                    <!--Solicitante-->
+
+                    <div class="card">
+                        <div class="card-title">
+                            <div class="icon-bar">
+                                <a href="#">
+                                    <i class="material-icons">person</i> Solicitante
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating" id="divsolicitanteemail">
+                                        @Html.LabelFor(model => model.SolicitanteEmail, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.SolicitanteEmail, new { htmlAttributes = new { @class = "form-control typeahead", @id = "solicitanteemailid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                        <span id="solicitanteemailid_error1" style="display: none;">Campo Obligatorio</span>
+                                        <span id="solicitanteemailid_error2" style="display: none;">Favor incorporar e-mail válido</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating controls" id="divubicacionsss">
+                                        @Html.LabelFor(model => model.UbicacionNombre, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.UbicacionNombre, new { htmlAttributes = new { @class = "form-control typeahead", @id = "crearsss_ubicacionid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                        <span id="crearsss_ubicacionid_error1" style="display: none;">Campo Obligatorio</span>
+                                        <span id="crearsss_ubicacionid_error2" style="display: none;">Favor incorporar carácteres válidos</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.SolicitanteNombre, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.SolicitanteNombre, new { htmlAttributes = new { @class = "form-control", @id = "solicitantenombreid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                        @*<span id="solicitantenombreid_error1" style="display: none;">Campo Obligatorio</span>*@
+                                        @*<span id="solicitantenombreid_error2" style="display: none;">Favor incorporar nombre del solicitante</span>*@
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", @id = "crearsss_telefonoid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                        <span id="crearsss_telefonoid_error" style="display: none;">Campo Obligatorio</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control", @id = "crearsss_direccionid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                        @*<span id="crearsss_telefonoid_error" style="display: none;">Campo Obligatorio</span>*@
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Empresa</label>
+                                        <input type="text" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="dropdown ">
+                                        @Html.DropDownListFor(model => model.EmpresaId, new SelectList(ViewBag.Empresas, "EmpresaId", "Nombre"), "Seleccione Empresa", new { @class = "form-control", @id = "crearsss_empresaid" })
+                                        <span id="crearsss_empresaid_error" style="display: none;">Favor seleccionar Empresa</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating controls" id="divsociedadsss">
+                                        @Html.LabelFor(model => model.SociedadNombre, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.SociedadNombre, new { htmlAttributes = new { @class = "form-control typeahead", @id = "crearsss_sociedadid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                        <span id="crearsss_sociedadid_error" style="display: none;">Campo Obligatorio</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating controls" id="divccypsss">
+                                        @Html.LabelFor(model => model.CentroCostoNombre, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.CentroCostoNombre, new { htmlAttributes = new { @class = "form-control typeahead", @id = "crearsss_ccypid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                        <span id="crearsss_ccypid_error" style="display: none;">Campo Obligatorio</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Tecnico-->
+
+                    <div class="card">
+                        <div class="card-title">
+                            <div class="icon-bar">
+                                <a href="#">
+                                    <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
+                                    <i class="material-icons">person_outline</i> Asignado a (opcional)
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating controls" id="divasignadoemail">
+                                        @Html.LabelFor(model => model.AsignadoAEmail, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.AsignadoAEmail, new { htmlAttributes = new { @class = "form-control typeahead", @id = "asignadoemailid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                        <span id="asignadoemailid_error" style="display: none;">Favor incorporar e-mail válido</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--Documentos -->
+                    @*<div class="card">
+                            <div class="card-title">
+                                <div class="icon-bar">
+                                    <a href="#">
+                                        <i class="material-icons">file_upload</i> Documentos (opcional)
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <label class="input-group-btn ">
+                                                <span class="btn btn-file">
+                                                    Buscar&hellip; <input type="file" style="display: none;" multiple>
+                                                </span>
+                                            </label>
+                                            <input type="text" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+
+                <!-- Derecha -->
+                <div class="col-md-6">
+
+                    <!--Detalle-->
+
+                    <div class="card">
+                        <div class="card-title">
+                            <div class="icon-bar">
+                                <a href="#">
+                                    <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
+                                    <i class="material-icons">description</i> Detalle
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-content">
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.HorasTotal, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.HorasTotal, new { htmlAttributes = new { @class = "form-control", @id = "crearsss_horasid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                        <span id="crearsss_horasid_error" style="display: none;">Campo Obligatorio</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.FechaSolicitada, htmlAttributes: new { @class = "control-label" })
+                                        <div class="input-group input-append date">
+                                            @Html.EditorFor(model => model.FechaSolicitada, new { htmlAttributes = new { @class = "form-control", @id = "crearsss_fechasolicitadaid" } })
+                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                            @*<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>*@
+                                        </div>
+                                        <span id="crearsss_fechasolicitadaid_error" style="display: none;">Campo Obligatorio</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.FechaComprometida, htmlAttributes: new { @class = "control-label" })
+                                        <div class="input-group input-append date">
+                                            @Html.EditorFor(model => model.FechaComprometida, new { htmlAttributes = new { @class = "form-control", @id = "crearsss_fechacomprometidaid" } })
+                                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "...", new { @class = "error" })*@
+                                            @*<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>*@
+                                        </div>
+                                        <span id="crearsss_fechacomprometidaid_error" style="display: none;">Campo Obligatorio</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Referencia, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Referencia, new { htmlAttributes = new { @class = "form-control", @id = "referenciaid" } })
+                                        @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                                        <span id="referenciaid_error" style="display: none;">Campo Obligatorio</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Estado</label>
+                                        <input type="text" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="dropdown ">
+                                        @Html.DropDownListFor(model => model.EstadoId, new SelectList(ViewBag.EstadosSolicitud, "EstadoSolicitudId", "NombreEstado", Model.EstadoId), new { @class = "form-control", @id = "crearssscomp_estadoid" })
+                                        <span id="crearssscomp_estadoid_error" style="display: none;">Favor seleccionar Estado</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Tipo Solicitud</label>
+                                        <input type="text" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="dropdown ">
+                                        @Html.DropDownListFor(model => model.TipoSolicitudId, new SelectList(ViewBag.TiposSolicitud, "TipoSolicitudId", "NombreSolicitud"), "Seleccione Tipo", new { @class = "form-control", @id = "crearsss_tiposolicitudid" })
+                                        <span id="crearsss_tiposolicitudid_error" style="display: none;">Favor seleccionar Tipo Solicitud</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Categoría</label>
+                                        <input type="text" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="dropdown ">
+                                        @*@Html.DropDownListFor(model => model.CategoriaId, new SelectList(ViewBag.Categorias, "CategoriaSolicitudId", "Descr"), "Seleccione Categoría", new { @class = "form-control", @id = "crearsss_categoriaid" })*@
+                                        @Html.DropDownListFor(model => model.CategoriaId, new SelectList(ViewBag.Categorias as System.Collections.IEnumerable, "CategoriaSolicitudId", "Descr"), "Seleccione Categoría", new { @class = "form-control", @id = "sss_categoriaid" })
+                                        <span id="sss_categoriaid_error" style="display: none;">Favor seleccionar Categoría</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label">Sub-categoría</label>
+                                        <input type="text" class="form-control" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="dropdown ">
+                                        @*@Html.DropDownListFor(model => model.SubCategoriaId, new SelectList(ViewBag.SubCategorias, "SubCategoriaId", "Descr"), "Seleccione Sub-categoría", new { @class = "form-control", @id = "crearsss_subcategoriaid" })*@
+                                        @Html.DropDownListFor(model => model.SubCategoriaId, new SelectList(Enumerable.Empty<SelectListItem>(), "SubCategoriaId", "Descr"), "Seleccione Sub-categoría", new { @class = "form-control", @id = "sss_subcategoriaid" })
+                                        <span id="sss_subcategoriaid_error" style="display: none;">Favor seleccionar Sub-categoría</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-2 text-center">
+                                    @Html.CheckBoxFor(m => m.Incidente, new { @class = "" })
+                                </div>
+                                <div class="col-md-4 text-left">
+                                    @Html.LabelFor(m => m.Incidente, new { @class = "" })
+                                    @*@Html.DisplayTextFor(m => m.Incidente)*@                      @*Muestra true o false*@
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating controls">
+                                        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control", @id = "crearsss_descripcionid", @rows = 5, @maxlength = 350 })
+                                        <span id="crearsss_descripcionid_error" style="display: none;">Favor incorporar Descripción</span>
+                                        <span id="sss_caracteres" style="color:gray">0 de 350 caracteres usados</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                //if (!string.IsNullOrEmpty(ViewBag.Result))
+                //{
+                //    Html.DisplayName((string)ViewBag.Result);
+                //}
+
+
+                // tipo cabeceraSSS
+                //@Html.HiddenFor(m => m.SolicitudId)
+
+                //@Html.HiddenFor(m => m.TipoSolicitudId)
+                @Html.HiddenFor(m => m.TipoSolicitudNombre)
+                @Html.HiddenFor(m => m.EmpresaId)
+                @Html.HiddenFor(m => m.EmpresaNombre)
+                @Html.HiddenFor(m => m.UbicacionId)
+                //@Html.HiddenFor(m => m.UbicacionNombre)
+                //@Html.HiddenFor(m => m.Proyecto)
+                //@Html.HiddenFor(m => m.Direccion)
+                //@Html.HiddenFor(m => m.Incidente)
+                @Html.HiddenFor(m => m.AsignadoAId)
+                @Html.HiddenFor(m => m.AsignadoANombre)
+                @Html.HiddenFor(m => m.AsignadoAEmail)
+                @Html.HiddenFor(m => m.SolicitanteIdRed)
+                @Html.HiddenFor(m => m.SolicitanteId)
+                @Html.HiddenFor(m => m.SolicitanteNombre)
+                //@Html.HiddenFor(m => m.SolicitanteEmail)
+                @Html.HiddenFor(m => m.CategoriaId)
+                @Html.HiddenFor(m => m.CategoriaNombre)
+                @Html.HiddenFor(m => m.SubCategoriaId)
+                @Html.HiddenFor(m => m.SubCategoriaNombre)
+                @Html.HiddenFor(m => m.HorasTotal)
+                //@Html.HiddenFor(m => m.Descripcion)
+                //@Html.HiddenFor(m => m.EstadoId)
+                @Html.HiddenFor(m => m.EstadoNombre)
+                @Html.HiddenFor(m => m.EstadoTipo)
+                //@Html.HiddenFor(m => m.FechaCreacion)
+                @Html.HiddenFor(m => m.FechaSolicitada)
+                @Html.HiddenFor(m => m.FechaComprometida)
+                //@Html.HiddenFor(m => m.FechaResolucion)
+                @Html.HiddenFor(m => m.SociedadNombre)
+                @Html.HiddenFor(m => m.CentroCostoNombre)
+
+                @*//@Html.HiddenFor(m => m.SolicitudId)
+
+                    @Html.HiddenFor(m => m.EmpresaId)
+                    @Html.HiddenFor(m => m.usuario)
+                    @Html.HiddenFor(m => m.fecha_creacion)
+                    @Html.HiddenFor(m => m.fecha_solicitud)
+                    @Html.HiddenFor(m => m.fecha_resolucion)
+                    @Html.HiddenFor(m => m.fecha_comprometida)
+                    @Html.HiddenFor(m => m.EstadoSolicitudId)                   // cargar del dropbox
+                    @Html.HiddenFor(m => m.TipoSolicitudId)                     // cargar del dropbox
+                    @Html.HiddenFor(m => m.SolicitanteIdRed)
+
+                    @Html.HiddenFor(m => m.Direccion)
+                    @Html.HiddenFor(m => m.PersonalId)
+                    @Html.HiddenFor(m => m.Telefono)
+                    @Html.HiddenFor(m => m.Obra)
+                    @Html.HiddenFor(m => m.Horas)
+                    @Html.HiddenFor(m => m.CategoriaSolicitudId)
+                    @Html.HiddenFor(m => m.EsIncidente)                          // cargar del dropbox
+                    @Html.HiddenFor(m => m.SubCategoriaId)*@
+
+                <button type="submit" id="submit" name="submit" value="CrearSSSComp" class="btn btn-primary pull-right">Crear Solicitud</button>
+                <div class="clearfix"></div>
+
+                @*</form>*@
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@{string stringcuentas = string.Empty;}
+@{stringcuentas = ViewBag.StringCuentas;}
+
+<textarea class="form-control" rows="1" id="listacuentasid" name="listacuentas" placeholder="">@stringcuentas</textarea>
+@*<textarea class="form-control" rows="1" id="crearsssasignadoid" name="crearsssasignado" placeholder="">@stringcuentas</textarea>*@
+
+
+
+@{string stringObraSalaVenta = string.Empty;}
+@{stringObraSalaVenta = ViewBag.StringObraSalaVenta;}
+<textarea class="form-control" rows="1" id="listaubicacionesid" name="listaubicaciones" placeholder="">@stringObraSalaVenta</textarea>
+
+
+
+@{string crearCCyP = string.Empty;}
+@{crearCCyP = ViewBag.StringCostoyProyecto;}
+<textarea class="form-control" rows="1" id="listaccypid" name="listaccyp" placeholder="">@crearCCyP</textarea>
+
+
+
+@{string crearSoc = string.Empty;}
+@{crearSoc = ViewBag.StringSociedades;}
+<textarea class="form-control" rows="1" id="listasocid" name="listasoc" placeholder="">@crearSoc</textarea>
+
+
+
+@{string stringsolicitantes = string.Empty;}
+@{stringsolicitantes = ViewBag.StringSolicitantes;}
+
+<textarea class="form-control" rows="1" id="listasolicitantesid" name="listasolicitantes" placeholder="">@stringsolicitantes</textarea>

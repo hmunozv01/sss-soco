@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutSS.cshtml";
+}
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header" data-background-color="purple">
+            <h4 class="title">Solicitud Soporte Sistemas</h4>
+            <p class="category">KPI's</p>
+        </div>
+        <div class="card-content">
+
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header" style="background-color: white;">
+
+                            <div class="chartwrapper" id="dbadm1_chartdiv2">
+                                <div class="chartdiv" id="dbadm2_chartdiv2"></div>
+                            </div>
+
+                            @*<div id="dbadm_chartdiv2" style="width: 600px; height: 400px;"></div>*@
+
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title">Solicitudes por Tipo</h4>
+                            <p class="category">Considera TODAS las solicitudes (abiertas y cerradas)</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">date_range</i> Últimos 90 días
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="row">
+                    <div class="col-md-6" id="db_chartdiv_tiposolicitud">
+                                <div id="db_chartdiv2_tiposolicitud" style="width: 540px; height: 360px;"></div>
+                    </div>
+                </div>*@
+
+
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header" style="background-color: white;">
+
+                            <div class="chartwrapper" id="db_chartdiv_categoria">
+                                <div class="chartdiv" id="db_chartdiv1_categoria"></div>
+                            </div>
+
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title">Solicitudes por Categoría</h4>
+                            <p class="category">Considera TODAS las solicitudes (abiertas y cerradas)</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">date_range</i> Últimos 90 días
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card">
+                        @*<div class="card-header" style="background-color: white; width: 750px; height: 500px;">*@
+                        <div class="card-header" style="background-color: white;">
+
+                            <div class="chartwrapper" id="db_chartdiv_estado_solicitud_por_responsable">
+                                <div class="chartdiv" id="db_chartdiv1_estado_solicitud_por_responsable"></div>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title">Solicitudes por Responsable según Estado</h4>
+                            <p class="category">Considera TODOS los estados</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">date_range</i> Últimos 90 días
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="row">
+                    <div class="col-md-12" id="db_chartdiv_estado_solicitud_por_responsable">
+                        <div id="db_chartdiv1_estado_solicitud_por_responsable" style="width: 600px; height: 400px;"></div>
+                    </div>
+                </div>*@
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-header" style="background-color: white;">
+
+                            <div class="chartwrapper" id="db_chartdiv_solicitudes_pendientes_atrasadas_por_responsable">
+                                <div class="chartdiv" id="db_chartdiv1_solicitudes_pendientes_atrasadas_por_responsable"></div>
+                            </div>
+
+                        </div>
+                        <div class="card-content">
+                            <h4 class="title">Solicitudes Pendientes por Responsable</h4>
+                            <p class="category">Considera solicitudes Pendientes y Atrasadas</p>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                                <i class="material-icons">date_range</i> Últimos 90 días
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="row">
+                    <div class="col-md-12" id="db_chartdiv_solicitudes_pendientes_atrasadas_por_responsable">
+                        <div id="db_chartdiv1_solicitudes_pendientes_atrasadas_por_responsable" style="width: 540px; height: 360px;"></div>
+                    </div>
+                </div>*@
+
+
+
+        </div>
+    </div>
+</div>
+
+
+

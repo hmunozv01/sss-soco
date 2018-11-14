@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "ExitoSSS";
+    Layout = "~/Views/Shared/_LayoutSS.cshtml";
+}
+
+
+@{
+    string mensaje_exito = string.Empty;
+    mensaje_exito = ViewBag.MensajeExito;
+}
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header" data-background-color="green">
+            <h4 class="title">Solicitud Soporte Sistemas</h4>
+            <p class="category">Se ha procesado correctamente el requerimiento.</p>
+        </div>
+        <div class="card-content">
+
+            <div class="col-md-12">
+
+                <p class="text-success">
+                    @mensaje_exito
+                </p>
+
+                @if (Model != null)
+                {
+
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group label-floating">
+                                    <label class="control-label">Resultado</label>
+                                    <input type="date" class="form-control" id="" name="" value="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                }
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+

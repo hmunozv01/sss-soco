@@ -1,0 +1,467 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8FA8667-9A55-47E7-BBB8-ECE9BB93CDA9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SolicitudSoporteSistemas_prd</RootNamespace>
+    <AssemblyName>SolicitudSoporteSistemas_prd</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-notify.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dashboard-vssn.css" />
+    <Content Include="Content\demo.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\fonts.googleapis.com.family.Roboto.css" />
+    <Content Include="Content\Images\apple-icon.png" />
+    <Content Include="Content\Images\cover.jpeg" />
+    <Content Include="Content\Images\favicon.png" />
+    <Content Include="Content\Images\LogoEmpresasSocovesa.jpg" />
+    <Content Include="Content\Images\LogoEmpresasSocovesa.png" />
+    <Content Include="Content\Images\LogoEmpresasSocovesaCorto.jpg" />
+    <Content Include="Content\Images\mask.png" />
+    <Content Include="Content\Images\new_logo.png" />
+    <Content Include="Content\Images\sidebar-1.jpg" />
+    <Content Include="Content\Images\sidebar-2.jpg" />
+    <Content Include="Content\Images\sidebar-3.jpg" />
+    <Content Include="Content\Images\sidebar-4.jpg" />
+    <Content Include="Content\Images\tim_80x80.png" />
+    <Content Include="Content\jchart.css" />
+    <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\material-dashboard.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\typeahead.css" />
+    <Content Include="Content\vsandoval.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\amcharts.js" />
+    <Content Include="Scripts\arrive.js" />
+    <Content Include="Scripts\arrive.min.js" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
+    <Content Include="Scripts\bootstrap-notify.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chartist.min.js" />
+    <Content Include="Scripts\demo.js" />
+    <Content Include="Scripts\funnel.js" />
+    <Content Include="Scripts\gantt.js" />
+    <Content Include="Scripts\gauge.js" />
+    <Content Include="Scripts\jchart.js" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-es.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\light.js" />
+    <Content Include="Scripts\material-dashboard.js" />
+    <Content Include="Scripts\material.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\perfect-scrollbar.jquery.js" />
+    <Content Include="Scripts\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Scripts\pie.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\radar.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\serial.js" />
+    <Content Include="Scripts\the-basics.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
+    <Content Include="Scripts\typeahead.js" />
+    <Content Include="Scripts\vsandoval.js" />
+    <Content Include="SoporteICSA_prdEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SoporteICSA_prdEntities.edmx</DependentUpon>
+      <LastGenOutput>SoporteICSA_prdEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SoporteICSA_prdEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SoporteICSA_prdEntities.edmx</DependentUpon>
+      <LastGenOutput>SoporteICSA_prdEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="Views\Shared\_LayoutSS.cshtml" />
+    <Content Include="Views\SS\CrearLogSSS.cshtml" />
+    <Content Include="Views\SS\CrearSSS.cshtml" />
+    <Content Include="Views\SS\CrearSSSComp.cshtml" />
+    <Content Include="Views\SS\Dashboard.cshtml" />
+    <Content Include="Views\SS\DashboardAdm.cshtml" />
+    <Content Include="Views\SS\DashboardTec.cshtml" />
+    <Content Include="Views\SS\ErrorSSS.cshtml" />
+    <Content Include="Views\SS\ExitoSSS.cshtml" />
+    <Content Include="Views\SS\FormularioContacto.cshtml" />
+    <Content Include="Views\SS\IncidentesPendientes.cshtml" />
+    <Content Include="Views\SS\LoginErrorSSS.cshtml" />
+    <Content Include="Views\SS\MisIncidentesPendientes.cshtml" />
+    <Content Include="Views\SS\MisSSSPendientes.cshtml" />
+    <Content Include="Views\SS\MisSSSResueltas.cshtml" />
+    <Content Include="Views\SS\ModificarSSS.cshtml" />
+    <Content Include="Views\SS\SSSPendientes.cshtml" />
+    <Content Include="Views\SS\SSSResueltas.cshtml" />
+    <Content Include="Views\SS\SSSSinAsignar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccionLog.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Area.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriaSolicitud.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CentroCostoyProyectos.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\SSController.cs" />
+    <Compile Include="DocAdjuntos.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocTemplate.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Empresa.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="equiposoporte.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstadoSolicitud.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CabeceraSSS.cs" />
+    <Compile Include="Models\DB_Adm_Tipo_Solicitud.cs" />
+    <Compile Include="Models\DB_Categoria.cs" />
+    <Compile Include="Models\DB_Estado_Solicitud_por_Responsable.cs" />
+    <Compile Include="Models\DB_Solicitudes_Pendientes_Atrasadas_por_Responsable.cs" />
+    <Compile Include="Models\DocumentoSSS.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\LogSSS.cs" />
+    <Compile Include="Models\Minutos.cs" />
+    <Compile Include="Models\Modificacion.cs" />
+    <Compile Include="Models\RolUsuario.cs" />
+    <Compile Include="Models\SolicitudSS.cs" />
+    <Compile Include="Models\UsuarioSSS.cs" />
+    <Compile Include="ObraSalaVenta.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personal.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalRol.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalSubCategoria.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regional.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResumenSolicitudes.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResumenSolicitudesMobile.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Rol.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="seguimientoproc.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sociedades.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solicitante.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Solicitud.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoporteICSA_prdEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoporteICSA_prdEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoporteICSA_prdEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SoporteICSA_prdEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoporteICSA_prdEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SP_APP_ObtenerHorasyTicketDelDiaxUsuario_Result.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DB_Obtener_Categoria_Result.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SP_DB_Obtener_Tipo_Solicitud_Result.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubCategoria.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TareaSolicitud.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoDoc.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoLog.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoSolicitud.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoTarea.cs">
+      <DependentUpon>SoporteICSA_prdEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Views\SS\SSSTotal.cshtml" />
+    <EntityDeploy Include="SoporteICSA_prdEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SoporteICSA_prdEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SoporteICSA_prdEntities.edmx.diagram">
+      <DependentUpon>SoporteICSA_prdEntities.edmx</DependentUpon>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49550</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49550/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

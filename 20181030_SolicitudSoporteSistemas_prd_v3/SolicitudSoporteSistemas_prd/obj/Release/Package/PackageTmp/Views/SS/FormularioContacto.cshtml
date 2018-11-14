@@ -1,0 +1,80 @@
+﻿@model  SolicitudSoporteSistemas_prd.Models.Email
+
+@{
+    ViewBag.Title = "FormularioContacto";
+    Layout = "~/Views/Shared/_LayoutSS.cshtml";
+}
+
+
+
+<div class="col-md-8">
+    <div class="card">
+        <div class="card-header" data-background-color="purple">
+            <h4 class="title">Solicitud Soporte Sistemas</h4>
+            <p class="category">Formulario de Contacto</p>
+        </div>
+        <div class="card-content">
+
+@using (Html.BeginForm("FormularioContacto", "SS", FormMethod.Post, new { onsubmit = "return validateFormFormularioContacto()" }))
+{
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.emailfuente, htmlAttributes: new { @class = "control-label" })
+                            @Html.DisplayFor(model => model.emailfuente, new { htmlAttributes = new { @class = "form-control typeahead", @id = "formulariocontactode" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.emaildestinatario, htmlAttributes: new { @class = "control-label" })
+                            @Html.DisplayFor(model => model.emaildestinatario, new { htmlAttributes = new { @class = "form-control typeahead", @id = "formulariocontactopara" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.asunto, htmlAttributes: new { @class = "control-label" })
+                            @Html.DisplayFor(model => model.asunto, new { htmlAttributes = new { @class = "form-control typeahead", @id = "formulariocontactoasunto" } })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating">                        
+                            @Html.LabelFor(model => model.mensaje, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.mensaje, new { @class = "form-control", @id = "formulariocontactomensajeid", @rows = 5 })
+                            <span id="formulariocontactomensajeid_error" style="display: none;">Favor incorporar Mensaje</span>                        
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit" name="submit" value="FormularioContacto" class="btn btn-primary pull-right">Enviar Mensaje</button>
+                <div class="clearfix"></div>
+}
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card card-profile">
+        <div class="card-avatar">
+            <a href="#pablo">
+            <i class="material-icons" style="font-size: 100px">face</i>
+            </a>
+            @*<a href="#pablo">
+                <img class="img" src="../assets/img/faces/marc.jpg" />
+            </a>*@
+        </div>
+        <div class="content">
+            <h6 class="category text-gray">@Html.DisplayFor(model => model.cargo)</h6>
+            <h4 class="card-title">@Html.DisplayFor(model => model.nombrecompleto)</h4>
+            <p class="card-content">
+                @*Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...*@
+            </p>
+            @*<a href="#pablo" class="btn btn-primary btn-round">Follow</a>*@
+        </div>
+    </div>
+</div>

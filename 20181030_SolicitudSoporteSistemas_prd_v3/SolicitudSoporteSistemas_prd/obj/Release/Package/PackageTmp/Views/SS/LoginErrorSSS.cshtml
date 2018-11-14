@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "LoginErrorSSS";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@{
+    string mensaje_error = string.Empty;
+    mensaje_error = ViewBag.MensajeError;
+}
+
+<p class="text-danger">
+    @mensaje_error
+</p>

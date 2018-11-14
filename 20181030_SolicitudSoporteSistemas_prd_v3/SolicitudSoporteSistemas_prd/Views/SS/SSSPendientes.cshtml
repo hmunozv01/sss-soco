@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SolicitudSoporteSistemas_prd.Models.CabeceraSSS>
+
+@{
+    ViewBag.Title = "SSSPendientes";
+    Layout = "~/Views/Shared/_LayoutSS.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header" data-background-color="purple">
+            <h4 class="title">Solicitud Soporte Sistemas</h4>
+            <p class="category">Listado de Solicitudes Pendientes</p>
+        </div>
+        <div class="card-content table-responsive">
+            <table class="table table-hover table-striped" id="myTable">
+                <thead class="text-primary">
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.SolicitudId)</th>
+                        <th>@Html.DisplayNameFor(model => model.Descripcion)</th>
+                        <th>@Html.DisplayNameFor(model => model.EstadoNombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.FechaComprometida)</th>
+                        <th>@Html.DisplayNameFor(model => model.Incidente)</th>
+                        <th>@Html.DisplayNameFor(model => model.SolicitanteNombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.TipoSolicitudNombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.CategoriaNombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.AsignadoANombre)</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.SolicitudId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EstadoNombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.FechaComprometida)</td>
+                            <td style="text-align: center">@Html.DisplayFor(modelItem => item.Incidente)</td>
+                            <td>@Html.DisplayFor(modelItem => item.SolicitanteNombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TipoSolicitudNombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.CategoriaNombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.AsignadoANombre)</td>
+
+                            @*<td>
+                                    @Html.ActionLink("Edit", "Edit2", new { id = item.SolicitudId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.SolicitudId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.SolicitudId })
+                                </td>*@
+                            <td>
+                                <a href="@Url.Action("ModificarSSS", "SS", new { id = item.SolicitudId })">
+                                    <i class="material-icons">edit</i>
+                                    @*<p>Modificar SSS</p>*@
+                                </a>
+                            </td>
+                            @*<td class="td-actions text-right">
+                                    <button type="button" rel="tooltip" title="Editar" class="btn btn-primary btn-simple btn-xs">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                </td>*@
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

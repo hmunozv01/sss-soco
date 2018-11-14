@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SoporteICSA_prdModelStoreContainer" CdmEntityContainer="SoporteICSA_prdEntities">
+    <EntitySetMapping Name="AccionLog">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.AccionLog">
+        <MappingFragment StoreEntitySet="AccionLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriaSolicitud">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.CategoriaSolicitud">
+        <MappingFragment StoreEntitySet="CategoriaSolicitud">
+          <ScalarProperty Name="CategoriaSolicitudId" ColumnName="CategoriaSolicitudId" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CentroCostoyProyectos">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.CentroCostoyProyectos">
+        <MappingFragment StoreEntitySet="CentroCostoyProyectos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocAdjuntos">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.DocAdjuntos">
+        <MappingFragment StoreEntitySet="DocAdjuntos">
+          <ScalarProperty Name="IdDoc" ColumnName="IdDoc" />
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="IdTipoDoc" ColumnName="IdTipoDoc" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocTemplate">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.DocTemplate">
+        <MappingFragment StoreEntitySet="DocTemplate">
+          <ScalarProperty Name="IdDocTemp" ColumnName="IdDocTemp" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="IdTipoDoc" ColumnName="IdTipoDoc" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="RegionalId" ColumnName="RegionalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoSolicitud">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.EstadoSolicitud">
+        <MappingFragment StoreEntitySet="EstadoSolicitud">
+          <ScalarProperty Name="EstadoSolicitudId" ColumnName="EstadoSolicitudId" />
+          <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Horas" ColumnName="Horas" />
+          <ScalarProperty Name="Accion" ColumnName="Accion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="TipoId" ColumnName="TipoId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="AccionId" ColumnName="AccionId" />
+          <ScalarProperty Name="Tecnico" ColumnName="Tecnico" />
+          <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+          <ScalarProperty Name="EnvioEmail" ColumnName="EnvioEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ObraSalaVenta">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.ObraSalaVenta">
+        <MappingFragment StoreEntitySet="ObraSalaVenta">
+          <ScalarProperty Name="ObraSalaVenta1" ColumnName="ObraSalaVenta" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="NombreObraSalaVenta" ColumnName="NombreObraSalaVenta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personal">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Personal">
+        <MappingFragment StoreEntitySet="Personal">
+          <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidopaterno" ColumnName="Apellidopaterno" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="RegionalId" ColumnName="RegionalId" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalRol">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.PersonalRol">
+        <MappingFragment StoreEntitySet="PersonalRol">
+          <ScalarProperty Name="PersonalRol1" ColumnName="PersonalRol" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalSubCategoria">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.PersonalSubCategoria">
+        <MappingFragment StoreEntitySet="PersonalSubCategoria">
+          <ScalarProperty Name="PersonalSubCategoriaId" ColumnName="PersonalSubCategoriaId" />
+          <ScalarProperty Name="SubCategoriaId" ColumnName="SubCategoriaId" />
+          <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regional">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Regional">
+        <MappingFragment StoreEntitySet="Regional">
+          <ScalarProperty Name="RegionalId" ColumnName="RegionalId" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sociedades">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Sociedades">
+        <MappingFragment StoreEntitySet="Sociedades">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Regional" ColumnName="Regional" />
+          <ScalarProperty Name="RegionalId" ColumnName="RegionalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Solicitante">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Solicitante">
+        <MappingFragment StoreEntitySet="Solicitante">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+          <ScalarProperty Name="Sociedad" ColumnName="Sociedad" />
+          <ScalarProperty Name="CentroCosto" ColumnName="CentroCosto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Solicitud">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Solicitud">
+        <MappingFragment StoreEntitySet="Solicitud">
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="fecha_resolucion" ColumnName="fecha_resolucion" />
+          <ScalarProperty Name="fecha_comprometida" ColumnName="fecha_comprometida" />
+          <ScalarProperty Name="EstadoSolicitudId" ColumnName="EstadoSolicitudId" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="SolicitanteEmail" ColumnName="SolicitanteEmail" />
+          <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+          <ScalarProperty Name="SolicitanteIdRed" ColumnName="SolicitanteIdRed" />
+          <ScalarProperty Name="Obra_Oficina_SVenta" ColumnName="Obra_Oficina_SVenta" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Obra" ColumnName="Obra" />
+          <ScalarProperty Name="Horas" ColumnName="Horas" />
+          <ScalarProperty Name="CategoriaSolicitudId" ColumnName="CategoriaSolicitudId" />
+          <ScalarProperty Name="EsIncidente" ColumnName="EsIncidente" />
+          <ScalarProperty Name="SubCategoriaId" ColumnName="SubCategoriaId" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="SolicitanteNombre" ColumnName="SolicitanteNombre" />
+          <ScalarProperty Name="Sociedad" ColumnName="Sociedad" />
+          <ScalarProperty Name="Creacion" ColumnName="Creacion" />
+          <ScalarProperty Name="CCyP" ColumnName="CCyP" />
+          <ScalarProperty Name="SolicitanteId" ColumnName="SolicitanteId" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="UserIdRed" ColumnName="UserIdRed" />
+          <ScalarProperty Name="Esmobile" ColumnName="Esmobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategoria">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.SubCategoria">
+        <MappingFragment StoreEntitySet="SubCategoria">
+          <ScalarProperty Name="SubCategoriaId" ColumnName="SubCategoriaId" />
+          <ScalarProperty Name="CategoriaSolicitudId" ColumnName="CategoriaSolicitudId" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TareaSolicitud">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.TareaSolicitud">
+        <MappingFragment StoreEntitySet="TareaSolicitud">
+          <ScalarProperty Name="TareaSolicitudId" ColumnName="TareaSolicitudId" />
+          <ScalarProperty Name="TipoTareaId" ColumnName="TipoTareaId" />
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_comprometida_inicio" ColumnName="fecha_comprometida_inicio" />
+          <ScalarProperty Name="fecha_comprometida_fin" ColumnName="fecha_comprometida_fin" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="ResponsableIdRed" ColumnName="ResponsableIdRed" />
+          <ScalarProperty Name="Externo" ColumnName="Externo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoDoc">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.TipoDoc">
+        <MappingFragment StoreEntitySet="TipoDoc">
+          <ScalarProperty Name="IdTipoDoc" ColumnName="IdTipoDoc" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoLog">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.TipoLog">
+        <MappingFragment StoreEntitySet="TipoLog">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NombreTL" ColumnName="NombreTL" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoSolicitud">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.TipoSolicitud">
+        <MappingFragment StoreEntitySet="TipoSolicitud">
+          <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+          <ScalarProperty Name="NombreSolicitud" ColumnName="NombreSolicitud" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoTarea">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.TipoTarea">
+        <MappingFragment StoreEntitySet="TipoTarea">
+          <ScalarProperty Name="TipoTareaId" ColumnName="TipoTareaId" />
+          <ScalarProperty Name="NombreTipoTarea" ColumnName="NombreTipoTarea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="equiposoporte">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.equiposoporte">
+        <MappingFragment StoreEntitySet="equiposoporte">
+          <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seguimientoproc">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.seguimientoproc">
+        <MappingFragment StoreEntitySet="seguimientoproc">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResumenSolicitudes">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.ResumenSolicitudes">
+        <MappingFragment StoreEntitySet="ResumenSolicitudes">
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="fecha_resolucion" ColumnName="fecha_resolucion" />
+          <ScalarProperty Name="fecha_comprometida" ColumnName="fecha_comprometida" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="SolicitanteEmail" ColumnName="SolicitanteEmail" />
+          <ScalarProperty Name="SolicitanteIdRed" ColumnName="SolicitanteIdRed" />
+          <ScalarProperty Name="Obra_Oficina_SVenta" ColumnName="Obra_Oficina_SVenta" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="EstadoSolicitudId" ColumnName="EstadoSolicitudId" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Tipo_Solicitud" ColumnName="Tipo Solicitud" />
+          <ScalarProperty Name="resposable" ColumnName="resposable" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="Fecha_Status" ColumnName="Fecha Status" />
+          <ScalarProperty Name="UserIdRed" ColumnName="UserIdRed" />
+          <ScalarProperty Name="Descr_Status" ColumnName="Descr Status" />
+          <ScalarProperty Name="Obra" ColumnName="Obra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResumenSolicitudesMobile">
+      <EntityTypeMapping TypeName="SoporteICSA_prdModel.ResumenSolicitudesMobile">
+        <MappingFragment StoreEntitySet="ResumenSolicitudesMobile">
+          <ScalarProperty Name="SolicitudId" ColumnName="SolicitudId" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="fecha_solicitud" ColumnName="fecha_solicitud" />
+          <ScalarProperty Name="fecha_resolucion" ColumnName="fecha_resolucion" />
+          <ScalarProperty Name="fecha_comprometida" ColumnName="fecha_comprometida" />
+          <ScalarProperty Name="Descr" ColumnName="Descr" />
+          <ScalarProperty Name="SolicitanteEmail" ColumnName="SolicitanteEmail" />
+          <ScalarProperty Name="SolicitanteIdRed" ColumnName="SolicitanteIdRed" />
+          <ScalarProperty Name="Obra_Oficina_SVenta" ColumnName="Obra_Oficina_SVenta" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="EstadoSolicitudId" ColumnName="EstadoSolicitudId" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Tipo_Solicitud" ColumnName="Tipo Solicitud" />
+          <ScalarProperty Name="resposable" ColumnName="resposable" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="Fecha_Status" ColumnName="Fecha Status" />
+          <ScalarProperty Name="UserIdRed" ColumnName="UserIdRed" />
+          <ScalarProperty Name="Descr_Status" ColumnName="Descr Status" />
+          <ScalarProperty Name="Obra" ColumnName="Obra" />
+          <ScalarProperty Name="PersonalId" ColumnName="PersonalId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Apellidopaterno" ColumnName="Apellidopaterno" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="SoporteICSA_prdModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="SP_APP_ActualizarInsertarEstadodeSolicitud" FunctionName="SoporteICSA_prdModel.Store.SP_APP_ActualizarInsertarEstadodeSolicitud" />
+    <FunctionImportMapping FunctionImportName="SP_APP_InsertarStatusenSolicitud" FunctionName="SoporteICSA_prdModel.Store.SP_APP_InsertarStatusenSolicitud" />
+    <FunctionImportMapping FunctionImportName="SP_APP_ObtenerHorasDelDiaxUsuario" FunctionName="SoporteICSA_prdModel.Store.SP_APP_ObtenerHorasDelDiaxUsuario" />
+    <FunctionImportMapping FunctionImportName="SP_APP_ObtenerHorasyTicketDelDiaxUsuario" FunctionName="SoporteICSA_prdModel.Store.SP_APP_ObtenerHorasyTicketDelDiaxUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoporteICSA_prdModel.SP_APP_ObtenerHorasyTicketDelDiaxUsuario_Result">
+          <ScalarProperty Name="TotalHoras" ColumnName="TotalHoras" />
+          <ScalarProperty Name="TotalTickets" ColumnName="TotalTickets" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Carga_Centro_Costo_y_Proyectos" FunctionName="SoporteICSA_prdModel.Store.SP_Carga_Centro_Costo_y_Proyectos" />
+    <FunctionImportMapping FunctionImportName="SP_Carga_Sociedades" FunctionName="SoporteICSA_prdModel.Store.SP_Carga_Sociedades" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="SoporteICSA_prdModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="SP_DB_Obtener_Categoria" FunctionName="SoporteICSA_prdModel.Store.SP_DB_Obtener_Categoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoporteICSA_prdModel.SP_DB_Obtener_Categoria_Result">
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="CategoriaNombre" ColumnName="CategoriaNombre" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_DB_Obtener_Estado_Solicitud_por_Responsable" FunctionName="SoporteICSA_prdModel.Store.SP_DB_Obtener_Estado_Solicitud_por_Responsable" />
+    <FunctionImportMapping FunctionImportName="SP_DB_Obtener_Solicitantes" FunctionName="SoporteICSA_prdModel.Store.SP_DB_Obtener_Solicitantes" />
+    <FunctionImportMapping FunctionImportName="SP_DB_Obtener_Solicitudes_Pendientes_Atrasadas_por_Responsable" FunctionName="SoporteICSA_prdModel.Store.SP_DB_Obtener_Solicitudes_Pendientes_Atrasadas_por_Responsable" />
+    <FunctionImportMapping FunctionImportName="SP_DB_Obtener_Tipo_Solicitud" FunctionName="SoporteICSA_prdModel.Store.SP_DB_Obtener_Tipo_Solicitud">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoporteICSA_prdModel.SP_DB_Obtener_Tipo_Solicitud_Result">
+          <ScalarProperty Name="TipoSolicitudId" ColumnName="TipoSolicitudId" />
+          <ScalarProperty Name="TipoSolicitudNombre" ColumnName="TipoSolicitudNombre" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="SoporteICSA_prdModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_grabarextensionsolicitud" FunctionName="SoporteICSA_prdModel.Store.sp_grabarextensionsolicitud" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="SoporteICSA_prdModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoporteICSA_prdModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="SoporteICSA_prdModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SoporteICSA_prdModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="SoporteICSA_prdModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="SoporteICSA_prdModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

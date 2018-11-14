@@ -1,0 +1,129 @@
+﻿@model  SolicitudSoporteSistemas_prd.Models.LogSSS
+
+<div class="card">
+    <div class="card-title">
+        <div class="icon-bar">
+            <a href="#">
+                <!--<img class="img" src="../assets/img/faces/marc.jpg" />-->
+                <i class="material-icons">note_add</i> Nuevo Log
+            </a>
+        </div>
+    </div>
+    <div class="card-content">
+        @using (Html.BeginForm("CrearLogSSS", "SS", FormMethod.Post, new { onsubmit = "return validateFormCrearLogSSS()" }))
+        {
+
+            @Html.HiddenFor(model => model.LogFecha)
+            @Html.HiddenFor(model => model.LogSolicitudId)
+            //@Html.HiddenFor(model => model.LogTipoId)
+            @Html.HiddenFor(model => model.LogUsuarioEmail)
+            @Html.HiddenFor(model => model.LogUsuarioIdRed)
+            @Html.HiddenFor(model => model.LogPersonalId)
+            @Html.HiddenFor(model => model.LogTecnicoEmail)
+            @Html.HiddenFor(model => model.LogTecnicoNombre)
+            @Html.HiddenFor(model => model.LogSolicitudTipoEstadoIdNombre)
+
+            @Html.HiddenFor(model => model.LogTipoIdNombre)
+
+            @*@Html.HiddenFor(model => model.LogSolicitanteEmail)
+            @Html.HiddenFor(model => model.LogSolicitanteNombre)
+            @Html.HiddenFor(model => model.LogSolicitanteUbicacion)
+            @Html.HiddenFor(model => model.LogSolicitanteTelefono)
+            @Html.HiddenFor(model => model.LogSolicitudDescripción)*@
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group label-floating controls">
+                            @Html.LabelFor(model => model.LogDescripcion, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.LogDescripcion, new { @class = "form-control", @id = "crearlogsss_descripcionid", @rows = 2, @maxlength = 500 })
+                            <span id="crearlogsss_descripcionid_error" style="display: none;">Favor incorporar Descripción</span>
+                            <span id="logsss_caracteres" style="color:gray">0 de 500 caracteres usados</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.LogHora, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.LogHora, new { htmlAttributes = new { @class = "form-control", @id = "crearlogsss_horasid" } })
+                            @*@Html.ValidationMessageFor(model => model.Cabecera.SolicitanteEmail, "", new { @class = "text-danger" })*@
+                            <span id="crearlogsss_horasid_error" style="display: none;">Campo Obligatorio</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="dropdown ">
+                            @*@Html.DropDownListFor(model => model.CategoriaId, new SelectList(ViewBag.Categorias, "CategoriaSolicitudId", "Descr"), "Seleccione Categoría", new { @class = "form-control", @id = "modificarsss_categoriaid" })*@
+                            @Html.DropDownListFor(model => model.LogMinutos, new SelectList(Model.LogListaMinutos as System.Collections.IEnumerable, "MinutosCantidad", "MinutosNombre"), "Minutos", new { @class = "form-control", @id = "crearlogsss_listaminutosid" })
+                            <span id="crearlogsss_listaminutosid_error" style="display: none;">Favor seleccionar Categoría</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="dropdown ">
+                            @*@Html.DropDownListFor(model => model.CategoriaId, new SelectList(ViewBag.Categorias, "CategoriaSolicitudId", "Descr"), "Seleccione Categoría", new { @class = "form-control", @id = "modificarsss_categoriaid" })*@
+                            @*@Html.DropDownListFor(model => model.LogMinutos, new SelectList(Model.LogListaMinutos as System.Collections.IEnumerable, "MinutosCantidad", "MinutosNombre"), "Minutos", new { @class = "form-control", @id = "crearlogsss_listaminutosid" })*@
+                            @Html.DropDownListFor(model => model.LogTipoId, new SelectList(ViewBag.ListaTipoLog, "Id", "NombreTL"), Model.LogTipoIdNombre, new { @class = "form-control", @id = "crearlogsss_listatipologsid" })
+                            @*<span id="crearlogsss_listatipologsid" style="display: none;">Favor seleccionar Tipo Log</span>*@
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="col-md-4 text-right">
+                            @Html.CheckBoxFor(model => model.LogEmail, new { @class = "" })
+                        </div>
+                        <div class="col-md-8 text-left">
+                            @Html.LabelFor(model => model.LogEmail, new { @class = "" })
+                            @*@Html.DisplayTextFor(m => m.Incidente)*@                      @*Muestra true o false*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                @*<div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4 text-right">
+                            @Html.CheckBoxFor(model => model.LogEmail, new { @class = "" })
+                        </div>
+                        <div class="col-md-8 text-left">
+                            @Html.LabelFor(model => model.LogEmail, new { @class = "" })
+                        </div>
+                    </div>
+                </div>*@
+                @*<div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4 text-right">
+                            @Html.CheckBoxFor(model => model.LogCerrarSolicitud, new { @class = "" })
+                        </div>
+                        <div class="col-md-8 text-left">
+                            @Html.LabelFor(model => model.LogCerrarSolicitud, new { @class = "" })
+                        </div>
+                    </div>
+                </div>*@
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <button type="submit" id="submitCL" name="submitButton" value="CrearLogSSS" class="btn btn-primary">Crear Log</button>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        @if (Model.LogSolicitudTipoEstadoIdNombre.Equals("inicial"))
+                        {
+                            <button type="submit" id="submitCS" name="submitButton" value="CerrarSSS" class="btn btn-primary">Cerrar Solicitud</button>
+                            <div class="clearfix"></div>
+                        }
+                        else
+                        {
+                        }
+                    </div>
+                </div>
+            </div>
+            
+        }
+        </div>
+</div>
+
+
+

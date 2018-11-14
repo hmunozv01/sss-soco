@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "DashboardTec";
+    Layout = "~/Views/Shared/_LayoutSS.cshtml";
+}
+
+
+
+<body style="font-size:15px;">
+    Select theme:
+    <a href="#" onclick="makeChartsByClick('light', '#ffffff');">Light</a> |
+    <a href="#" onclick="makeChartsByClick('dark', '#282828')">Dark</a> |
+    <a href="#" onclick="makeChartsByClick('black', '#222222')">Black</a> |
+    <a href="#" onclick="makeChartsByClick('patterns', '#ffffff')">Patterns</a> |
+    <a href="#" onclick="makeChartsByClick('chalk', '#282828', 'images/board.jpg')">Chalk</a>
+
+    <div id="chartdiv1" style="width: 600px; height: 400px;"></div>
+    <div id="chartdiv2" style="width: 600px; height: 400px;"></div>
+</body>
